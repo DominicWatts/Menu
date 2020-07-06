@@ -8,6 +8,9 @@ use Magento\Framework\App\Helper\AbstractHelper;
 
 class Data extends AbstractHelper
 {
+
+    const PLEASE_SELECT_TEXT = "-- Please Select --";
+
     const ENABLED = 1;
     const DISABLED = 0;
     const ENABLED_TEXT = "Enabled";

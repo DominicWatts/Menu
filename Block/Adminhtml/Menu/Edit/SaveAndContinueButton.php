@@ -11,7 +11,6 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
 class SaveAndContinueButton extends GenericButton implements ButtonProviderInterface
 {
-
     /**
      * @return array
      */
@@ -29,4 +28,3 @@ class SaveAndContinueButton extends GenericButton implements ButtonProviderInter
         ];
     }
 }
-

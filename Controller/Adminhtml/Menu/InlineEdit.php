@@ -42,14 +42,14 @@ class InlineEdit extends \Magento\Backend\App\Action
                 $messages[] = __('Please correct the data sent.');
                 $error = true;
             } else {
-                foreach (array_keys($postItems) as $modelid) {
+                foreach (array_keys($postItems) as $modelId) {
                     /** @var \Xigen\Menu\Model\Menu $model */
-                    $model = $this->_objectManager->create(\Xigen\Menu\Model\Menu::class)->load($modelid);
+                    $model = $this->_objectManager->create(\Xigen\Menu\Model\Menu::class)->load($modelId);
                     try {
-                        $model->setData(array_merge($model->getData(), $postItems[$modelid]));
+                        $model->setData($postItems[$modelId] + $model->getData());
                         $model->save();
                     } catch (\Exception $e) {
-                        $messages[] = "[Menu ID: {$modelid}]  {$e->getMessage()}";
+                        $messages[] = "[Menu ID: {$modelId}]  {$e->getMessage()}";
                         $error = true;
                     }
                 }
