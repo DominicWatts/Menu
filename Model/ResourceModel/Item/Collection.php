@@ -7,6 +7,9 @@ declare(strict_types=1);
 
 namespace Xigen\Menu\Model\ResourceModel\Item;
 
+use Xigen\Menu\Api\Data\ItemInterface;
+use Xigen\Menu\Api\Data\MenuInterface;
+
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
     /**
@@ -50,22 +53,29 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function addMenuFilter($menu)
     {
-        if ($menu instanceof \Xigen\Menu\Model\Menu) {
-            $menu = $menu->getId();
-        }
+        if ($menu) {
+            if ($menu instanceof \Xigen\Menu\Model\Menu) {
+                $menu = $menu->getMenuId();
+            }
 
-        $this->addFilter('menu_id', $menu);
+            $this->addFilter(MenuInterface::MENU_ID, $menu);
+        }
 
         return $this;
     }
 
     /**
-     * Add status filter to item collection
+     * Filter collection by status
+     * @param string $status
      * @return $this
      */
-    public function addStatusFilter()
+    public function addStatusFilter($status = null)
     {
-        $this->addFilter('is_active', 1);
+        if (empty($status)) {
+            $this->addFieldToFilter(ItemInterface::IS_ACTIVE, ['null' => true]);
+        } else {
+            $this->addFieldToFilter(ItemInterface::IS_ACTIVE, $status);
+        }
         return $this;
     }
 
@@ -75,7 +85,7 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function setPositionOrder()
     {
-        $this->setOrder('position', 'asc');
+        $this->setOrder(ItemInterface::POSITION, 'asc');
         return $this;
     }
 
@@ -85,18 +95,21 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     public function setParentIdOrder()
     {
-        $this->setOrder('parent_id', 'asc');
+        $this->setOrder(ItemInterface::PARENT_ID, 'asc');
         return $this;
     }
 
     /**
-     * @param $itemId
+     * @param $item
      * @return $this
      */
-    public function excludeCurrentItem($itemId)
+    public function excludeCurrentItem($item)
     {
-        if ($itemId) {
-            $this->addFieldToFilter('item_id', ['nin' => $itemId]);
+        if ($item) {
+            if ($item instanceof \Xigen\Menu\Model\Item) {
+                $item = $item->getItemId();
+            }
+            $this->addFieldToFilter(ItemInterface::ITEM_ID, ['nin' => $item]);
         }
         return $this;
     }

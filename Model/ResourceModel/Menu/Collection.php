@@ -7,6 +7,8 @@ declare(strict_types=1);
 
 namespace Xigen\Menu\Model\ResourceModel\Menu;
 
+use Xigen\Menu\Api\Data\MenuInterface;
+
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
 
@@ -26,5 +28,20 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
             \Xigen\Menu\Model\Menu::class,
             \Xigen\Menu\Model\ResourceModel\Menu::class
         );
+    }
+
+    /**
+     * Filter collection by status
+     * @param string $status
+     * @return $this
+     */
+    public function addStatusFilter($status = null)
+    {
+        if (empty($status)) {
+            $this->addFieldToFilter(MenuInterface::IS_ACTIVE, ['null' => true]);
+        } else {
+            $this->addFieldToFilter(MenuInterface::IS_ACTIVE, $status);
+        }
+        return $this;
     }
 }

@@ -36,10 +36,10 @@ class Menu implements OptionSourceInterface
         // phpcs:enable
 
         foreach ($collection as $menu) {
-            $name = $menu->getName();
-            $urlPath = $menu->getUrlPath();
+            $name = $menu->getMenuId() . ' ' . $menu->getTitle();
+            $urlKey = $menu->getIdentifier();
 
-            if (isset($name) && isset($urlPath)) {
+            if (isset($name) && isset($urlKey)) {
                 $suffix = '';
 
                 if (!$menu->getIsActive()) {
@@ -47,8 +47,8 @@ class Menu implements OptionSourceInterface
                 }
 
                 $menus[] = [
-                    'value' => $menu->getId(),
-                    'label' => __($menu->getName()) . ' ' . $suffix
+                    'value' => $menu->getMenuId(),
+                    'label' => __($name) . ' ' . $suffix
                 ];
             }
         }
@@ -72,17 +72,17 @@ class Menu implements OptionSourceInterface
         // phpcs:enable
 
         foreach ($collection as $menu) {
-            $name = $menu->getName();
-            $urlPath = $menu->getUrlPath();
+            $name = $menu->getMenuId() . ' ' . $menu->getTitle();
+            $urlKey = $menu->getIdentifier();
 
-            if (isset($name) && isset($urlPath)) {
+            if (isset($name) && isset($urlKey)) {
                 $suffix = '';
 
                 if (!$menu->getIsActive()) {
                     $suffix = __('(Inactive)');
                 }
 
-                $menus[$menu->getId()] = __($menu->getName()) . ' ' . $suffix;
+                $menus[$menu->getMenuId()] = __($name) . ' ' . $suffix;
             }
         }
     }
@@ -93,7 +93,9 @@ class Menu implements OptionSourceInterface
     protected function _getMenuCollection()
     {
         if (!$this->_menuCollection) {
-            $collection = $this->menuCollectionFactory->create();
+            $collection = $this->menuCollectionFactory
+                ->create()
+                ->addStatusFilter(Data::ENABLED);
             $this->_menuCollection = $collection;
         }
         return $this->_menuCollection;
