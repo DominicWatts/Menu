@@ -1,14 +1,11 @@
 <?php
-/**
- * Copyright ©  All rights reserved.
- * See COPYING.txt for license details.
- */
-declare(strict_types=1);
 
 namespace Xigen\Menu\Model\ResourceModel\Item;
 
 use Xigen\Menu\Api\Data\ItemInterface;
 use Xigen\Menu\Api\Data\MenuInterface;
+use Xigen\Menu\Model\Item;
+use Xigen\Menu\Model\Menu;
 
 class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
 {
@@ -54,7 +51,10 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     public function addMenuFilter($menu)
     {
         if ($menu) {
-            if ($menu instanceof \Xigen\Menu\Model\Menu) {
+            if ($menu instanceof Menu) {
+                $menu = $menu->getMenuId();
+            }
+            if ($menu instanceof Item) {
                 $menu = $menu->getMenuId();
             }
 
@@ -106,9 +106,10 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
     public function excludeCurrentItem($item)
     {
         if ($item) {
-            if ($item instanceof \Xigen\Menu\Model\Item) {
+            if ($item instanceof Item) {
                 $item = $item->getItemId();
             }
+
             $this->addFieldToFilter(ItemInterface::ITEM_ID, ['nin' => $item]);
         }
         return $this;
