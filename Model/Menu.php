@@ -69,7 +69,7 @@ class Menu extends \Magento\Framework\Model\AbstractModel
         return $menuDataObject;
     }
 
-     /**
+    /**
      * Before save
      */
     public function beforeSave()

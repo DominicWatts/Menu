@@ -102,22 +102,7 @@
                 </validation>
             </settings>
         </field>
-        <field formElement="input" name="url" sortOrder="50">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Item</item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">URL</label>
-                <dataScope>url</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
-            </settings>
-        </field>
-        <field formElement="select" name="open_type" sortOrder="60">
+        <field formElement="select" name="open_type" sortOrder="50">
             <argument name="data" xsi:type="array">
             <item name="options" xsi:type="object">Xigen\Menu\Model\Config\Source\OpenType</item>
                 <item name="config" xsi:type="array">
@@ -133,7 +118,7 @@
                 </validation>
             </settings>
         </field>
-        <field formElement="select" name="url_type" sortOrder="70">
+        <field formElement="select" name="url_type" sortOrder="60">
             <argument name="data" xsi:type="array">
                 <item name="options" xsi:type="object">Xigen\Menu\Model\Config\Source\UrlType</item>
                 <item name="config" xsi:type="array">
@@ -144,6 +129,21 @@
                 <dataType>text</dataType>
                 <label translate="true">URL Type</label>
                 <dataScope>url_type</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field formElement="input" name="url" sortOrder="70">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Item</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Custom URL</label>
+                <dataScope>url</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
                 </validation>

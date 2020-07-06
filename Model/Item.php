@@ -10,6 +10,10 @@ namespace Xigen\Menu\Model;
 use Magento\Framework\Api\DataObjectHelper;
 use Xigen\Menu\Api\Data\ItemInterface;
 use Xigen\Menu\Api\Data\ItemInterfaceFactory;
+use Magento\Framework\UrlInterface;
+use Magento\Catalog\Model\CategoryRepository;
+use Magento\Cms\Helper\Page;
+use Xigen\Menu\Helper\Data;
 
 class Item extends \Magento\Framework\Model\AbstractModel
 {
@@ -35,6 +39,16 @@ class Item extends \Magento\Framework\Model\AbstractModel
     protected $itemFactory;
 
     /**
+     * @var \Magento\Framework\UrlInterface
+     */
+    protected $_urlBuilder;
+
+    /**
+     * @var Magento\Cms\Helper\Page
+     */
+    protected $_cmsPageHelper;
+
+    /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param ItemInterfaceFactory $itemDataFactory
@@ -52,12 +66,18 @@ class Item extends \Magento\Framework\Model\AbstractModel
         \Xigen\Menu\Model\ResourceModel\Item\Collection $resourceCollection,
         \Xigen\Menu\Model\MenuFactory $menuFactory,
         \Xigen\Menu\Model\ItemFactory $itemFactory,
+        UrlInterface $urlBuilder,
+        CategoryRepository $categoryRepository,
+        Page $cmsPageHelper,
         array $data = []
     ) {
         $this->itemDataFactory = $itemDataFactory;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->menuFactory = $menuFactory;
         $this->itemFactory = $itemFactory;
+        $this->_urlBuilder = $urlBuilder;
+        $this->categoryRepository = $categoryRepository;
+        $this->_cmsPageHelper = $cmsPageHelper;
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
 
@@ -125,5 +145,50 @@ class Item extends \Magento\Framework\Model\AbstractModel
     {
         return (bool) $this->getParent();
     }
+    
+    /**
+     * Get category
+     * @return \Magento\Category\Module\Category
+     */
+    public function getCategory()
+    {
+        if (!$this->getCategoryId()) {
+            return false;
+        }
+        try {
+            return $this->categoryRepository->get($this->getCategoryId());
+        } catch (\Exception $e) {
+            return false;
+        }
+    }
 
+    /**
+     * Get final URL string
+     * @return void
+     */
+    public function getFinalUrl()
+    {
+        if (!$this->fullUrl) {
+            switch ($this->getUrlType()) {
+                case Data::CUSTOM_URL:
+                default:
+                    if ($itemUrl = $this->getUrl()) {
+                        if (strpos($itemUrl, '://') === false) {
+                            $itemUrl = $this->_urlBuilder->getDirectUrl($itemUrl != '/' ? $itemUrl : '');
+                        }
+                        $this->fullUrl = $itemUrl;
+                    }
+                    break;
+                case Data::CMS_PAGE:
+                    $this->fullUrl = $this->_cmsPageHelper->getPageUrl($this->getCmsPageIdentifier());
+                    break;
+                case Data::CATEGORY:
+                    if ($category = $this->getCategory()) {
+                        $this->fullUrl = $category->getUrl();
+                    }
+                    break;
+            }
+        }
+        return $this->fullUrl;
+    }
 }
