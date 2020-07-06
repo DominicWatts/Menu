@@ -55,7 +55,9 @@ class Edit extends \Xigen\Menu\Controller\Adminhtml\Menu
             $id ? __('Edit Menu') : __('New Menu')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Menus'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Menu %1', $model->getId()) : __('New Menu'));
+        $resultPage->getConfig()->getTitle()->prepend(
+            $model->getId() ? __('Edit Menu %1', $model->getId()) : __('New Menu')
+        );
         return $resultPage;
     }
 }
