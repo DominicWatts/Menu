@@ -13,66 +13,12 @@ use Xigen\Menu\Api\Data\MenuInterface;
 use Xigen\Menu\Model\Item;
 use Xigen\Menu\Model\Menu;
 
-use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
-use Magento\Framework\Data\Collection\EntityFactory;
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\Event\ManagerInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Store\Model\Store;
-use Magento\Store\Model\StoreManagerInterface;
-use Psr\Log\LoggerInterface;
-
 class Collection extends AbstractCollection
 {
     /**
      * @var string
      */
     protected $_idFieldName = 'item_id';
-
-    /**
-     * @var StoreManagerInterface
-     */
-    protected $_storeManager;
-
-    /**
-     * @var TimezoneInterface
-     */
-    protected $localeDate;
-
-    /**
-     * Undocumented function
-     * @param \Magento\Framework\Data\Collection\EntityFactory $entityFactory
-     * @param \Psr\Log\LoggerInterface $logger
-     * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
-     * @param \Magento\Framework\Event\ManagerInterface $eventManager
-     * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate
-     * @param \Magento\Framework\DB\Adapter\AdapterInterface $connection
-     * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
-     */
-    public function __construct(
-        EntityFactory $entityFactory,
-        LoggerInterface $logger,
-        FetchStrategyInterface $fetchStrategy,
-        ManagerInterface $eventManager,
-        StoreManagerInterface $storeManager,
-        TimezoneInterface $localeDate,
-        AdapterInterface $connection = null,
-        AbstractDb $resource = null
-    ) {
-        $this->_storeManager = $storeManager;
-        $this->localeDate = $localeDate;
-        parent::__construct(
-            $entityFactory,
-            $logger,
-            $fetchStrategy,
-            $eventManager,
-            $connection,
-            $resource
-        );
-    }
 
     /**
      * Define resource model
