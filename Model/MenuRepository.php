@@ -24,7 +24,6 @@ use Xigen\Menu\Model\ResourceModel\Menu\CollectionFactory as MenuCollectionFacto
 
 class MenuRepository implements MenuRepositoryInterface
 {
-
     protected $extensibleDataObjectConverter;
     protected $menuCollectionFactory;
 
@@ -45,7 +44,6 @@ class MenuRepository implements MenuRepositoryInterface
     protected $extensionAttributesJoinProcessor;
 
     private $collectionProcessor;
-
 
     /**
      * @param ResourceMenu $resource
@@ -95,15 +93,15 @@ class MenuRepository implements MenuRepositoryInterface
             $storeId = $this->storeManager->getStore()->getId();
             $menu->setStoreId($storeId);
         } */
-        
+
         $menuData = $this->extensibleDataObjectConverter->toNestedArray(
             $menu,
             [],
             \Xigen\Menu\Api\Data\MenuInterface::class
         );
-        
+
         $menuModel = $this->menuFactory->create()->setData($menuData);
-        
+
         try {
             $this->resource->save($menuModel);
         } catch (\Exception $exception) {
@@ -135,22 +133,22 @@ class MenuRepository implements MenuRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->menuCollectionFactory->create();
-        
+
         $this->extensionAttributesJoinProcessor->process(
             $collection,
             \Xigen\Menu\Api\Data\MenuInterface::class
         );
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model->getDataModel();
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -182,4 +180,3 @@ class MenuRepository implements MenuRepositoryInterface
         return $this->delete($this->get($menuId));
     }
 }
-

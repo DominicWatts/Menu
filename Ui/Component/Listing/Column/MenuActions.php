@@ -9,7 +9,6 @@ namespace Xigen\Menu\Ui\Component\Listing\Column;
 
 class MenuActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
-
     const URL_PATH_DETAILS = 'xigen_menu/menu/details';
     protected $urlBuilder;
     const URL_PATH_DELETE = 'xigen_menu/menu/delete';
@@ -71,8 +70,7 @@ class MenuActions extends \Magento\Ui\Component\Listing\Columns\Column
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }
-

@@ -24,7 +24,6 @@ use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory as ItemCollectionFacto
 
 class ItemRepository implements ItemRepositoryInterface
 {
-
     protected $extensibleDataObjectConverter;
     protected $itemFactory;
 
@@ -45,7 +44,6 @@ class ItemRepository implements ItemRepositoryInterface
     protected $extensionAttributesJoinProcessor;
 
     private $collectionProcessor;
-
 
     /**
      * @param ResourceItem $resource
@@ -95,15 +93,15 @@ class ItemRepository implements ItemRepositoryInterface
             $storeId = $this->storeManager->getStore()->getId();
             $item->setStoreId($storeId);
         } */
-        
+
         $itemData = $this->extensibleDataObjectConverter->toNestedArray(
             $item,
             [],
             \Xigen\Menu\Api\Data\ItemInterface::class
         );
-        
+
         $itemModel = $this->itemFactory->create()->setData($itemData);
-        
+
         try {
             $this->resource->save($itemModel);
         } catch (\Exception $exception) {
@@ -135,22 +133,22 @@ class ItemRepository implements ItemRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->itemCollectionFactory->create();
-        
+
         $this->extensionAttributesJoinProcessor->process(
             $collection,
             \Xigen\Menu\Api\Data\ItemInterface::class
         );
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model->getDataModel();
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -182,4 +180,3 @@ class ItemRepository implements ItemRepositoryInterface
         return $this->delete($this->get($itemId));
     }
 }
-

@@ -260,4 +260,3 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements It
         return $this->setData(self::IS_ACTIVE, $isActive);
     }
 }
-

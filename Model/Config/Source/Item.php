@@ -3,9 +3,9 @@
 namespace Xigen\Menu\Model\Config\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
+use Magento\Framework\Registry;
 use Xigen\Menu\Helper\Data;
 use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory as ItemCollectionFactory;
-use Magento\Framework\Registry;
 
 class Item implements OptionSourceInterface
 {
@@ -100,7 +100,7 @@ class Item implements OptionSourceInterface
             $collection = $this->itemCollectionFactory
                 ->create()
                 ->addStatusFilter(Data::ENABLED);
-            
+
             $item = $this->coreRegistry->registry('xigen_menu_item');
 
             if ($item && $item->getItemId()) {

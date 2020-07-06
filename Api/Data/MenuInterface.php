@@ -9,7 +9,6 @@ namespace Xigen\Menu\Api\Data;
 
 interface MenuInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-
     const TITLE = 'title';
     const IS_ACTIVE = 'is_active';
     const MENU_ID = 'menu_id';
@@ -110,4 +109,3 @@ interface MenuInterface extends \Magento\Framework\Api\ExtensibleDataInterface
      */
     public function setStoreId($storeId);
 }
-

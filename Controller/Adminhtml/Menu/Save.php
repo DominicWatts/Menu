@@ -11,7 +11,6 @@ use Magento\Framework\Exception\LocalizedException;
 
 class Save extends \Magento\Backend\App\Action
 {
-
     protected $dataPersistor;
 
     /**
@@ -38,20 +37,20 @@ class Save extends \Magento\Backend\App\Action
         $data = $this->getRequest()->getPostValue();
         if ($data) {
             $id = $this->getRequest()->getParam('menu_id');
-        
+
             $model = $this->_objectManager->create(\Xigen\Menu\Model\Menu::class)->load($id);
             if (!$model->getId() && $id) {
                 $this->messageManager->addErrorMessage(__('This Menu no longer exists.'));
                 return $resultRedirect->setPath('*/*/');
             }
-        
+
             $model->setData($data);
-        
+
             try {
                 $model->save();
                 $this->messageManager->addSuccessMessage(__('You saved the Menu.'));
                 $this->dataPersistor->clear('xigen_menu_menu');
-        
+
                 if ($this->getRequest()->getParam('back')) {
                     return $resultRedirect->setPath('*/*/edit', ['menu_id' => $model->getId()]);
                 }
@@ -61,11 +60,10 @@ class Save extends \Magento\Backend\App\Action
             } catch (\Exception $e) {
                 $this->messageManager->addExceptionMessage($e, __('Something went wrong while saving the Menu.'));
             }
-        
+
             $this->dataPersistor->set('xigen_menu_menu', $data);
             return $resultRedirect->setPath('*/*/edit', ['menu_id' => $this->getRequest()->getParam('menu_id')]);
         }
         return $resultRedirect->setPath('*/*/');
     }
 }
-

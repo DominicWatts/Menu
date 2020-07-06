@@ -9,7 +9,6 @@ namespace Xigen\Menu\Controller\Adminhtml\Menu;
 
 class NewAction extends \Xigen\Menu\Controller\Adminhtml\Menu
 {
-
     protected $resultForwardFactory;
 
     /**
@@ -38,4 +37,3 @@ class NewAction extends \Xigen\Menu\Controller\Adminhtml\Menu
         return $resultForward->forward('edit');
     }
 }
-

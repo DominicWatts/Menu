@@ -146,4 +146,3 @@ class Menu extends \Magento\Framework\Api\AbstractExtensibleObject implements Me
         return $this->setData(self::STORE_ID, $storeId);
     }
 }
-

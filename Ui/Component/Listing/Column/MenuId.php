@@ -2,11 +2,10 @@
 
 namespace Xigen\Menu\Ui\Component\Listing\Column;
 
-use \Magento\Ui\Component\Listing\Columns\Column;
-use \Magento\Framework\View\Element\UiComponent\ContextInterface;
-use \Magento\Framework\View\Element\UiComponentFactory;
-use \Xigen\Menu\Model\MenuFactory;
-
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Ui\Component\Listing\Columns\Column;
+use Xigen\Menu\Model\MenuFactory;
 
 class MenuId extends Column
 {
@@ -46,7 +45,8 @@ class MenuId extends Column
                     ->create()
                     ->load($item['menu_id']);
                 if ($menu && $menu->getTitle()) {
-                    $item['menu_id'] = (string) __("%1 %2",
+                    $item['menu_id'] = (string) __(
+                        "%1 %2",
                         $item['menu_id'],
                         $menu->getTitle()
                     );

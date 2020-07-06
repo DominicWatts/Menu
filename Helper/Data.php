@@ -8,9 +8,8 @@ use Magento\Framework\App\Helper\AbstractHelper;
 
 class Data extends AbstractHelper
 {
-
     const PLEASE_SELECT_TEXT = "-- Please Select --";
-    
+
     const ROOT_ID = 0;
     const ROOT_TEXT = "Root";
 

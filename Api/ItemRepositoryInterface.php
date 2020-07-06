@@ -7,8 +7,6 @@ declare(strict_types=1);
 
 namespace Xigen\Menu\Api;
 
-use Magento\Framework\Api\SearchCriteriaInterface;
-
 interface ItemRepositoryInterface
 {
 
@@ -55,4 +53,3 @@ interface ItemRepositoryInterface
      */
     public function deleteById($itemId);
 }
-

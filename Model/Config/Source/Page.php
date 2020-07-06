@@ -2,9 +2,9 @@
 
 namespace Xigen\Menu\Model\Config\Source;
 
+use Magento\Cms\Model\ResourceModel\Page\CollectionFactory as PageCollectionFactory;
 use Magento\Framework\Data\OptionSourceInterface;
 use Xigen\Menu\Helper\Data;
-use Magento\Cms\Model\ResourceModel\Page\CollectionFactory as PageCollectionFactory;
 
 class Page implements OptionSourceInterface
 {

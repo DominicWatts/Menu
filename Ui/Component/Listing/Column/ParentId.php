@@ -2,11 +2,10 @@
 
 namespace Xigen\Menu\Ui\Component\Listing\Column;
 
-use \Magento\Ui\Component\Listing\Columns\Column;
-use \Magento\Framework\View\Element\UiComponent\ContextInterface;
-use \Magento\Framework\View\Element\UiComponentFactory;
-use \Xigen\Menu\Model\ItemFactory;
-
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Ui\Component\Listing\Columns\Column;
+use Xigen\Menu\Model\ItemFactory;
 
 class ParentId extends Column
 {
@@ -46,7 +45,8 @@ class ParentId extends Column
                     ->create()
                     ->load($item['parent_id']);
                 if ($menu && $menu->getTitle()) {
-                    $item['parent_id'] = (string) __("%1 %2",
+                    $item['parent_id'] = (string) __(
+                        "%1 %2",
                         $item['parent_id'],
                         $menu->getTitle()
                     );

@@ -9,7 +9,6 @@ namespace Xigen\Menu\Ui\Component\Listing\Column;
 
 class ItemActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
-
     const URL_PATH_EDIT = 'xigen_menu/item/edit';
     const URL_PATH_DETAILS = 'xigen_menu/item/details';
     protected $urlBuilder;
@@ -71,8 +70,7 @@ class ItemActions extends \Magento\Ui\Component\Listing\Columns\Column
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }
-

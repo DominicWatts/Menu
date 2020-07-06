@@ -44,4 +44,3 @@ class Delete extends \Xigen\Menu\Controller\Adminhtml\Menu
         return $resultRedirect->setPath('*/*/');
     }
 }
-

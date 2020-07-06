@@ -1,20 +1,20 @@
 <?php
 /**
  * A Magento 2 module named Xigen/Menu
- * Copyright (C) 2019 
- * 
+ * Copyright (C) 2019
+ *
  * This file included in Xigen/Menu is licensed under OSL 3.0
- * 
+ *
  * http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  * Please see LICENSE.txt for the full text of the OSL 3.0 license
  */
 
 namespace Xigen\Menu\Setup;
 
+use Magento\Framework\DB\Ddl\Table;
+use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
-use Magento\Framework\Setup\InstallSchemaInterface;
-use Magento\Framework\DB\Ddl\Table;
 
 class InstallSchema implements InstallSchemaInterface
 {
@@ -173,9 +173,8 @@ class InstallSchema implements InstallSchemaInterface
             [],
             'Is Active'
         );
-       
+
         $setup->getConnection()->createTable($table_xigen_menu_menu);
         $setup->getConnection()->createTable($table_xigen_menu_item);
-
     }
 }

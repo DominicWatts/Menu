@@ -12,12 +12,10 @@ use Xigen\Menu\Model\ResourceModel\Menu\CollectionFactory;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
-
     protected $loadedData;
     protected $collection;
 
     protected $dataPersistor;
-
 
     /**
      * Constructor
@@ -59,15 +57,14 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             $this->loadedData[$model->getId()] = $model->getData();
         }
         $data = $this->dataPersistor->get('xigen_menu_menu');
-        
+
         if (!empty($data)) {
             $model = $this->collection->getNewEmptyItem();
             $model->setData($data);
             $this->loadedData[$model->getId()] = $model->getData();
             $this->dataPersistor->clear('xigen_menu_menu');
         }
-        
+
         return $this->loadedData;
     }
 }
-

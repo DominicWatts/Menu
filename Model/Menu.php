@@ -14,7 +14,6 @@ use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory;
 
 class Menu extends \Magento\Framework\Model\AbstractModel
 {
-
     protected $menuDataFactory;
 
     protected $dataObjectHelper;
@@ -58,14 +57,14 @@ class Menu extends \Magento\Framework\Model\AbstractModel
     public function getDataModel()
     {
         $menuData = $this->getData();
-        
+
         $menuDataObject = $this->menuDataFactory->create();
         $this->dataObjectHelper->populateWithArray(
             $menuDataObject,
             $menuData,
             MenuInterface::class
         );
-        
+
         return $menuDataObject;
     }
 

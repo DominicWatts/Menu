@@ -7,17 +7,16 @@ declare(strict_types=1);
 
 namespace Xigen\Menu\Model;
 
-use Magento\Framework\Api\DataObjectHelper;
-use Xigen\Menu\Api\Data\ItemInterface;
-use Xigen\Menu\Api\Data\ItemInterfaceFactory;
-use Magento\Framework\UrlInterface;
 use Magento\Catalog\Model\CategoryRepository;
 use Magento\Cms\Helper\Page;
+use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\UrlInterface;
+use Xigen\Menu\Api\Data\ItemInterface;
+use Xigen\Menu\Api\Data\ItemInterfaceFactory;
 use Xigen\Menu\Helper\Data;
 
 class Item extends \Magento\Framework\Model\AbstractModel
 {
-
     protected $dataObjectHelper;
 
     protected $_eventPrefix = 'xigen_menu_item';
@@ -88,14 +87,14 @@ class Item extends \Magento\Framework\Model\AbstractModel
     public function getDataModel()
     {
         $itemData = $this->getData();
-        
+
         $itemDataObject = $this->itemDataFactory->create();
         $this->dataObjectHelper->populateWithArray(
             $itemDataObject,
             $itemData,
             ItemInterface::class
         );
-        
+
         return $itemDataObject;
     }
 
@@ -167,7 +166,7 @@ class Item extends \Magento\Framework\Model\AbstractModel
     {
         return (bool) $this->getParent();
     }
-    
+
     /**
      * Get category
      * @return \Magento\Category\Module\Category

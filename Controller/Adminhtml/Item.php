@@ -9,7 +9,6 @@ namespace Xigen\Menu\Controller\Adminhtml;
 
 abstract class Item extends \Magento\Backend\App\Action
 {
-
     const ADMIN_RESOURCE = 'Xigen_Menu::top_level';
     protected $_coreRegistry;
 
@@ -39,4 +38,3 @@ abstract class Item extends \Magento\Backend\App\Action
         return $resultPage;
     }
 }
-

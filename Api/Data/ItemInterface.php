@@ -9,7 +9,6 @@ namespace Xigen\Menu\Api\Data;
 
 interface ItemInterface extends \Magento\Framework\Api\ExtensibleDataInterface
 {
-
     const ITEM_ID = 'item_id';
     const IS_ACTIVE = 'is_active';
     const PARENT_ID = 'parent_id';
@@ -194,4 +193,3 @@ interface ItemInterface extends \Magento\Framework\Api\ExtensibleDataInterface
      */
     public function setIsActive($isActive);
 }
-

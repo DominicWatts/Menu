@@ -9,7 +9,6 @@ namespace Xigen\Menu\Controller\Adminhtml\Menu;
 
 class Edit extends \Xigen\Menu\Controller\Adminhtml\Menu
 {
-
     protected $resultPageFactory;
 
     /**
@@ -36,7 +35,7 @@ class Edit extends \Xigen\Menu\Controller\Adminhtml\Menu
         // 1. Get ID and create model
         $id = $this->getRequest()->getParam('menu_id');
         $model = $this->_objectManager->create(\Xigen\Menu\Model\Menu::class);
-        
+
         // 2. Initial checking
         if ($id) {
             $model->load($id);
@@ -48,7 +47,7 @@ class Edit extends \Xigen\Menu\Controller\Adminhtml\Menu
             }
         }
         $this->_coreRegistry->register('xigen_menu_menu', $model);
-        
+
         // 3. Build edit form
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
         $resultPage = $this->resultPageFactory->create();
@@ -61,4 +60,3 @@ class Edit extends \Xigen\Menu\Controller\Adminhtml\Menu
         return $resultPage;
     }
 }
-

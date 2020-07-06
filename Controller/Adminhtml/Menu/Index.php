@@ -9,7 +9,6 @@ namespace Xigen\Menu\Controller\Adminhtml\Menu;
 
 class Index extends \Magento\Backend\App\Action
 {
-
     protected $resultPageFactory;
 
     /**
@@ -34,8 +33,7 @@ class Index extends \Magento\Backend\App\Action
     public function execute()
     {
         $resultPage = $this->resultPageFactory->create();
-            $resultPage->getConfig()->getTitle()->prepend(__("Menu"));
-            return $resultPage;
+        $resultPage->getConfig()->getTitle()->prepend(__("Menu"));
+        return $resultPage;
     }
 }
-
