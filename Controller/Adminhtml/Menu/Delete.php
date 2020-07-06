@@ -12,7 +12,6 @@ class Delete extends \Xigen\Menu\Controller\Adminhtml\Menu
 
     /**
      * Delete action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()

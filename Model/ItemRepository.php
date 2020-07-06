@@ -24,25 +24,59 @@ use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory as ItemCollectionFacto
 
 class ItemRepository implements ItemRepositoryInterface
 {
+    /**
+     * @var ExtensibleDataObjectConverter
+     */
     protected $extensibleDataObjectConverter;
+
+    /**
+     * @var ItemFactory
+     */
     protected $itemFactory;
 
+    /**
+     * @var ItemCollectionFactory
+     */
     protected $itemCollectionFactory;
 
+    /**
+     * @var ItemInterfaceFactory
+     */
     protected $dataItemFactory;
 
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
+    /**
+     * @var ResourceItem
+     */
     protected $resource;
 
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
 
+    /**
+     * @var ItemSearchResultsInterfaceFactory
+     */
     protected $searchResultsFactory;
 
+    /**
+     * @var DataObjectProcessor
+     */
     protected $dataObjectProcessor;
 
+    /**
+     * @var JoinProcessorInterface
+     */
     protected $extensionAttributesJoinProcessor;
 
+    /**
+     * @var CollectionProcessorInterface
+     */
     private $collectionProcessor;
 
     /**
@@ -89,11 +123,6 @@ class ItemRepository implements ItemRepositoryInterface
      */
     public function save(\Xigen\Menu\Api\Data\ItemInterface $item)
     {
-        /* if (empty($item->getStoreId())) {
-            $storeId = $this->storeManager->getStore()->getId();
-            $item->setStoreId($storeId);
-        } */
-
         $itemData = $this->extensibleDataObjectConverter->toNestedArray(
             $item,
             [],

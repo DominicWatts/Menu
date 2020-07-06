@@ -9,7 +9,6 @@ namespace Xigen\Menu\Api;
 
 interface ItemRepositoryInterface
 {
-
     /**
      * Save Item
      * @param \Xigen\Menu\Api\Data\ItemInterface $item

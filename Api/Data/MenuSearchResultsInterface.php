@@ -9,7 +9,6 @@ namespace Xigen\Menu\Api\Data;
 
 interface MenuSearchResultsInterface extends \Magento\Framework\Api\SearchResultsInterface
 {
-
     /**
      * Get Menu list.
      * @return \Xigen\Menu\Api\Data\MenuInterface[]

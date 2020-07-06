@@ -27,7 +27,6 @@ class NewAction extends \Xigen\Menu\Controller\Adminhtml\Menu
 
     /**
      * New action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()

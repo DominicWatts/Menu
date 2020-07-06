@@ -9,7 +9,6 @@ namespace Xigen\Menu\Model\ResourceModel;
 
 class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 {
-
     /**
      * Define resource model
      *

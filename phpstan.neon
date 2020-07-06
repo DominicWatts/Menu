@@ -1,6 +1,13 @@
 
 parameters:
     level: 0
+    autoload_directories:
+        - Api
+        - Block
+        - Model
+        - Setup
+        - Ui
+        - view
     excludes_analyse:
         - 'vendor'
     ignoreErrors:

@@ -12,9 +12,19 @@ use Xigen\Menu\Model\ResourceModel\Menu\CollectionFactory;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+    /**
+     * @var array
+     */
     protected $loadedData;
+
+    /**
+     * @var \Xigen\Menu\Model\ResourceModel\Menu\Collection
+     */
     protected $collection;
 
+    /**
+     * @var DataPersistorInterface
+     */
     protected $dataPersistor;
 
     /**

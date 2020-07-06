@@ -27,7 +27,6 @@ class Save extends \Magento\Backend\App\Action
 
     /**
      * Save action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()

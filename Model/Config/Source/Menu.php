@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright ©  All rights reserved.
+ * See COPYING.txt for license details.
+ */
+declare(strict_types=1);
 
 namespace Xigen\Menu\Model\Config\Source;
 
@@ -8,9 +13,20 @@ use Xigen\Menu\Model\ResourceModel\Menu\CollectionFactory as MenuCollectionFacto
 
 class Menu implements OptionSourceInterface
 {
+    /**
+     * @var MenuCollectionFactory
+     */
     private $menuCollectionFactory;
+
+    /**
+     * @var MenuCollection
+     */
     protected $_menuCollection;
 
+    /**
+     * Menu constructor.
+     * @param MenuCollectionFactory $menuCollectionFactory
+     */
     public function __construct(
         MenuCollectionFactory $menuCollectionFactory
     ) {

@@ -25,7 +25,6 @@ class InlineEdit extends \Magento\Backend\App\Action
 
     /**
      * Inline edit action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()

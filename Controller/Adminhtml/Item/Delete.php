@@ -9,10 +9,8 @@ namespace Xigen\Menu\Controller\Adminhtml\Item;
 
 class Delete extends \Xigen\Menu\Controller\Adminhtml\Item
 {
-
     /**
      * Delete action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()

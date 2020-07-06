@@ -9,7 +9,6 @@ namespace Xigen\Menu\Api;
 
 interface MenuRepositoryInterface
 {
-
     /**
      * Save Menu
      * @param \Xigen\Menu\Api\Data\MenuInterface $menu

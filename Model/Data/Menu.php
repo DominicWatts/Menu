@@ -11,7 +11,6 @@ use Xigen\Menu\Api\Data\MenuInterface;
 
 class Menu extends \Magento\Framework\Api\AbstractExtensibleObject implements MenuInterface
 {
-
     /**
      * Get menu_id
      * @return string|null

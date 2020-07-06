@@ -7,12 +7,20 @@ declare(strict_types=1);
 
 namespace Xigen\Menu\Ui\Component\Listing\Column;
 
+use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Framework\View\Element\UiComponentFactory;
+use Magento\Framework\UrlInterface;
+
 class ItemActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
     const URL_PATH_EDIT = 'xigen_menu/item/edit';
     const URL_PATH_DETAILS = 'xigen_menu/item/details';
-    protected $urlBuilder;
     const URL_PATH_DELETE = 'xigen_menu/item/delete';
+
+    /**
+     * @var \Magento\Framework\UrlInterface
+     */
+    protected $urlBuilder;
 
     /**
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
@@ -22,9 +30,9 @@ class ItemActions extends \Magento\Ui\Component\Listing\Columns\Column
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\View\Element\UiComponent\ContextInterface $context,
-        \Magento\Framework\View\Element\UiComponentFactory $uiComponentFactory,
-        \Magento\Framework\UrlInterface $urlBuilder,
+        ContextInterface $context,
+        UiComponentFactory $uiComponentFactory,
+        UrlInterface $urlBuilder,
         array $components = [],
         array $data = []
     ) {

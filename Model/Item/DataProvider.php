@@ -12,14 +12,22 @@ use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory;
 
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
+    /**
+     * @var array
+     */
     protected $loadedData;
+    /**
+     * @var \Xigen\Menu\Model\ResourceModel\Item\Collection
+     */
     protected $collection;
 
+    /**
+     * @var DataPersistorInterface
+     */
     protected $dataPersistor;
 
     /**
      * Constructor
-     *
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName

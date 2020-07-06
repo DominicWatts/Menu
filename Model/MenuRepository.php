@@ -24,25 +24,59 @@ use Xigen\Menu\Model\ResourceModel\Menu\CollectionFactory as MenuCollectionFacto
 
 class MenuRepository implements MenuRepositoryInterface
 {
+    /**
+     * @var ExtensibleDataObjectConverter
+     */
     protected $extensibleDataObjectConverter;
+
+    /**
+     * @var MenuCollectionFactory
+     */
     protected $menuCollectionFactory;
 
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
+    /**
+     * @var ResourceMenu
+     */
     protected $resource;
 
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
 
+    /**
+     * @var MenuSearchResultsInterfaceFactory
+     */
     protected $searchResultsFactory;
 
+    /**
+     * @var MenuFactory
+     */
     protected $menuFactory;
 
+    /**
+     * @var DataObjectProcessor
+     */
     protected $dataObjectProcessor;
 
+    /**
+     * @var MenuInterfaceFactory
+     */
     protected $dataMenuFactory;
 
+    /**
+     * @var JoinProcessorInterface
+     */
     protected $extensionAttributesJoinProcessor;
 
+    /**
+     * @var CollectionProcessorInterface
+     */
     private $collectionProcessor;
 
     /**
@@ -89,11 +123,6 @@ class MenuRepository implements MenuRepositoryInterface
      */
     public function save(\Xigen\Menu\Api\Data\MenuInterface $menu)
     {
-        /* if (empty($menu->getStoreId())) {
-            $storeId = $this->storeManager->getStore()->getId();
-            $menu->setStoreId($storeId);
-        } */
-
         $menuData = $this->extensibleDataObjectConverter->toNestedArray(
             $menu,
             [],

@@ -14,12 +14,27 @@ use Magento\Framework\UrlInterface;
 use Xigen\Menu\Api\Data\ItemInterface;
 use Xigen\Menu\Api\Data\ItemInterfaceFactory;
 use Xigen\Menu\Helper\Data;
+use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\Context;
+use Magento\Framework\Registry;
+use Xigen\Menu\Model\MenuFactory;
+use Xigen\Menu\Model\ItemFactory;
 
-class Item extends \Magento\Framework\Model\AbstractModel
+class Item extends AbstractModel
 {
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'xigen_menu_item';
+
+    /**
+     * @var ItemInterfaceFactory
+     */
     protected $itemDataFactory;
 
     /**
@@ -48,23 +63,29 @@ class Item extends \Magento\Framework\Model\AbstractModel
     protected $_cmsPageHelper;
 
     /**
-     * @param \Magento\Framework\Model\Context $context
-     * @param \Magento\Framework\Registry $registry
+     * Item constructor.
+     * @param Context $context
+     * @param Registry $registry
      * @param ItemInterfaceFactory $itemDataFactory
      * @param DataObjectHelper $dataObjectHelper
-     * @param \Xigen\Menu\Model\ResourceModel\Item $resource
-     * @param \Xigen\Menu\Model\ResourceModel\Item\Collection $resourceCollection
+     * @param ResourceModel\Item $resource
+     * @param ResourceModel\Item\Collection $resourceCollection
+     * @param \Xigen\Menu\Model\MenuFactory $menuFactory
+     * @param \Xigen\Menu\Model\ItemFactory $itemFactory
+     * @param UrlInterface $urlBuilder
+     * @param CategoryRepository $categoryRepository
+     * @param Page $cmsPageHelper
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
+        Context $context,
+        Registry $registry,
         ItemInterfaceFactory $itemDataFactory,
         DataObjectHelper $dataObjectHelper,
         \Xigen\Menu\Model\ResourceModel\Item $resource,
         \Xigen\Menu\Model\ResourceModel\Item\Collection $resourceCollection,
-        \Xigen\Menu\Model\MenuFactory $menuFactory,
-        \Xigen\Menu\Model\ItemFactory $itemFactory,
+        MenuFactory $menuFactory,
+        ItemFactory $itemFactory,
         UrlInterface $urlBuilder,
         CategoryRepository $categoryRepository,
         Page $cmsPageHelper,
@@ -168,8 +189,8 @@ class Item extends \Magento\Framework\Model\AbstractModel
     }
 
     /**
-     * Get category
-     * @return \Magento\Category\Module\Category
+     * Get Category
+     * @return bool|\Magento\Catalog\Api\Data\CategoryInterface|mixed|null
      */
     public function getCategory()
     {
@@ -184,8 +205,8 @@ class Item extends \Magento\Framework\Model\AbstractModel
     }
 
     /**
-     * Get final URL string
-     * @return void
+     * Get final URL
+     * @return string|null
      */
     public function getFinalUrl()
     {

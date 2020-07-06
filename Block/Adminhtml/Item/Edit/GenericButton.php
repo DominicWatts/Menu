@@ -11,6 +11,9 @@ use Magento\Backend\Block\Widget\Context;
 
 abstract class GenericButton
 {
+    /**
+     * @var Context
+     */
     protected $context;
 
     /**
@@ -33,7 +36,6 @@ abstract class GenericButton
 
     /**
      * Generate url by route and parameters
-     *
      * @param   string $route
      * @param   array $params
      * @return  string

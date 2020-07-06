@@ -11,7 +11,6 @@ use Xigen\Menu\Api\Data\ItemInterface;
 
 class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements ItemInterface
 {
-
     /**
      * Get item_id
      * @return string|null

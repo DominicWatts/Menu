@@ -13,7 +13,6 @@ class Index extends \Magento\Backend\App\Action
 
     /**
      * Constructor
-     *
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Framework\View\Result\PageFactory $resultPageFactory
      */
@@ -27,7 +26,6 @@ class Index extends \Magento\Backend\App\Action
 
     /**
      * Index action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()

@@ -32,7 +32,6 @@ class DeleteButton extends GenericButton implements ButtonProviderInterface
 
     /**
      * Get URL for delete button
-     *
      * @return string
      */
     public function getDeleteUrl()

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright ©  All rights reserved.
+ * See COPYING.txt for license details.
+ */
+declare(strict_types=1);
 
 namespace Xigen\Menu\Model\Config\Source;
 
@@ -8,9 +13,20 @@ use Xigen\Menu\Helper\Data;
 
 class Page implements OptionSourceInterface
 {
+    /**
+     * @var PageCollectionFactory
+     */
     private $pageCollectionFactory;
+
+    /**
+     * @var PageCollection
+     */
     protected $_pageCollection;
 
+    /**
+     * Page constructor.
+     * @param PageCollectionFactory $pageCollectionFactory
+     */
     public function __construct(
         PageCollectionFactory $pageCollectionFactory
     ) {

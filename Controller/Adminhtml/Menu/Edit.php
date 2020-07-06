@@ -27,7 +27,6 @@ class Edit extends \Xigen\Menu\Controller\Adminhtml\Menu
 
     /**
      * Edit action
-     *
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()

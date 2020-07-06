@@ -11,13 +11,25 @@ use Magento\Framework\Api\DataObjectHelper;
 use Xigen\Menu\Api\Data\MenuInterface;
 use Xigen\Menu\Api\Data\MenuInterfaceFactory;
 use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory;
+use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\Context;
+use Magento\Framework\Registry;
 
-class Menu extends \Magento\Framework\Model\AbstractModel
+class Menu extends AbstractModel
 {
+    /**
+     * @var MenuInterfaceFactory
+     */
     protected $menuDataFactory;
 
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
+    /**
+     * @var string
+     */
     protected $_eventPrefix = 'xigen_menu_menu';
 
     /**
@@ -35,8 +47,8 @@ class Menu extends \Magento\Framework\Model\AbstractModel
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
+        Context $context,
+        Registry $registry,
         MenuInterfaceFactory $menuDataFactory,
         DataObjectHelper $dataObjectHelper,
         \Xigen\Menu\Model\ResourceModel\Menu $resource,
@@ -79,7 +91,7 @@ class Menu extends \Magento\Framework\Model\AbstractModel
     }
 
     /**
-     * Get messages collection
+     * Get items collection
      * @return CollectionFactory
      */
     public function getItemCollection()

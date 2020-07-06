@@ -1,4 +1,9 @@
 <?php
+/**
+ * Copyright ©  All rights reserved.
+ * See COPYING.txt for license details.
+ */
+declare(strict_types=1);
 
 namespace Xigen\Menu\Model\Config\Source;
 
@@ -9,10 +14,26 @@ use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory as ItemCollectionFacto
 
 class Item implements OptionSourceInterface
 {
+    /**
+     * @var ItemCollectionFactory
+     */
     private $itemCollectionFactory;
+
+    /**
+     * @var ItemCollection
+     */
     protected $_itemCollection;
+
+    /**
+     * @var Registry
+     */
     protected $coreRegistry;
 
+    /**
+     * Item constructor.
+     * @param ItemCollectionFactory $itemCollectionFactory
+     * @param Registry $coreRegistry
+     */
     public function __construct(
         ItemCollectionFactory $itemCollectionFactory,
         Registry $coreRegistry
