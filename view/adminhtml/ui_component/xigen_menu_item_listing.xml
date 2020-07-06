@@ -89,6 +89,7 @@
                     <editorType>text</editorType>
                     <validation>
                         <rule name="required-entry" xsi:type="boolean">false</rule>
+                        <rule name="validate-identifier" xsi:type="boolean">true</rule>
                     </validation>
                 </editor>
             </settings>
@@ -107,7 +108,7 @@
         </column>
         <column name="open_type" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Xigen\Announce\Model\Config\Source\OpenType"/>
+                <options class="Xigen\Menu\Model\Config\Source\OpenType"/>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Open Type</label>
@@ -121,7 +122,7 @@
         </column>
         <column name="url_type" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Xigen\Announce\Model\Config\Source\UrlType"/>
+                <options class="Xigen\Menu\Model\Config\Source\UrlType"/>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">URL Type</label>
@@ -167,7 +168,7 @@
         </column>
         <column name="is_active" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Xigen\Announce\Model\Config\Source\Yesno"/>
+                <options class="Xigen\Menu\Model\Config\Source\Yesno"/>
                 <filter>select</filter>
                 <label translate="true">Status</label>
                 <editor>

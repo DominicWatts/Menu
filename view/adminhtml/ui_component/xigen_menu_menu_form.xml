@@ -52,6 +52,7 @@
                 <dataScope>identifier</dataScope>
                 <validation>
                     <rule name="required-entry" xsi:type="boolean">false</rule>
+                    <rule name="validate-identifier" xsi:type="boolean">true</rule>
                 </validation>
             </settings>
         </field>
