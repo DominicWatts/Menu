@@ -1,29 +1,29 @@
 <?xml version="1.0" ?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Xigen\Menu\Api\ItemRepositoryInterface" type="Xigen\Menu\Model\ItemRepository"/>
-    <preference for="Xigen\Menu\Api\Data\ItemInterface" type="Xigen\Menu\Model\Data\Item"/>
-    <preference for="Xigen\Menu\Api\Data\ItemSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-    <virtualType name="Xigen\Menu\Model\ResourceModel\Item\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
-        <arguments>
-            <argument name="mainTable" xsi:type="string">xigen_menu_item</argument>
-            <argument name="resourceModel" xsi:type="string">Xigen\Menu\Model\ResourceModel\Item\Collection</argument>
-        </arguments>
-    </virtualType>
-    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
-        <arguments>
-            <argument name="collections" xsi:type="array">
-                <item name="xigen_menu_item_listing_data_source" xsi:type="string">Xigen\Menu\Model\ResourceModel\Item\Grid\Collection</item>
-                <item name="xigen_menu_menu_listing_data_source" xsi:type="string">Xigen\Menu\Model\ResourceModel\Menu\Grid\Collection</item>
-            </argument>
-        </arguments>
-    </type>
-    <preference for="Xigen\Menu\Api\MenuRepositoryInterface" type="Xigen\Menu\Model\MenuRepository"/>
-    <preference for="Xigen\Menu\Api\Data\MenuInterface" type="Xigen\Menu\Model\Data\Menu"/>
-    <preference for="Xigen\Menu\Api\Data\MenuSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
-    <virtualType name="Xigen\Menu\Model\ResourceModel\Menu\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
-        <arguments>
-            <argument name="mainTable" xsi:type="string">xigen_menu_menu</argument>
-            <argument name="resourceModel" xsi:type="string">Xigen\Menu\Model\ResourceModel\Menu\Collection</argument>
-        </arguments>
-    </virtualType>
+	<preference for="Xigen\Menu\Api\ItemRepositoryInterface" type="Xigen\Menu\Model\ItemRepository"/>
+	<preference for="Xigen\Menu\Api\Data\ItemInterface" type="Xigen\Menu\Model\Data\Item"/>
+	<preference for="Xigen\Menu\Api\Data\ItemSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Xigen\Menu\Model\ResourceModel\Item\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">xigen_menu_item</argument>
+			<argument name="resourceModel" xsi:type="string">Xigen\Menu\Model\ResourceModel\Item\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="xigen_menu_item_listing_data_source" xsi:type="string">Xigen\Menu\Model\ResourceModel\Item\Grid\Collection</item>
+				<item name="xigen_menu_menu_listing_data_source" xsi:type="string">Xigen\Menu\Model\ResourceModel\Menu\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<preference for="Xigen\Menu\Api\MenuRepositoryInterface" type="Xigen\Menu\Model\MenuRepository"/>
+	<preference for="Xigen\Menu\Api\Data\MenuInterface" type="Xigen\Menu\Model\Data\Menu"/>
+	<preference for="Xigen\Menu\Api\Data\MenuSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Xigen\Menu\Model\ResourceModel\Menu\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">xigen_menu_menu</argument>
+			<argument name="resourceModel" xsi:type="string">Xigen\Menu\Model\ResourceModel\Menu\Collection</argument>
+		</arguments>
+	</virtualType>
 </config>

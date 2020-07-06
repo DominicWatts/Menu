@@ -43,6 +43,11 @@ class Item extends AbstractModel
     protected $menu;
 
     /**
+     * @var \Xigen\Menu\Model\Item
+     */
+    protected $parent;
+
+    /**
      * @var \Xigen\Menu\Model\MenuFactory
      */
     protected $menuFactory;
@@ -61,6 +66,16 @@ class Item extends AbstractModel
      * @var Magento\Cms\Helper\Page
      */
     protected $_cmsPageHelper;
+
+    /**
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
+
+    /**
+     * @var string
+     */
+    protected $fullUrl;
 
     /**
      * Item constructor.
