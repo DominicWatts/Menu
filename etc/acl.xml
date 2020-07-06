@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Xigen_Menu::Item" sortOrder="10" title="Item">
+					<resource id="Xigen_Menu::Item_save" sortOrder="10" title="Save Item"/>
+					<resource id="Xigen_Menu::Item_delete" sortOrder="20" title="Delete Item"/>
+					<resource id="Xigen_Menu::Item_update" sortOrder="30" title="Update Item"/>
+					<resource id="Xigen_Menu::Item_view" sortOrder="40" title="View Item"/>
+				</resource>
+				<resource id="Xigen_Menu::Menu" sortOrder="10" title="Menu">
+					<resource id="Xigen_Menu::Menu_save" sortOrder="10" title="Save Menu"/>
+					<resource id="Xigen_Menu::Menu_delete" sortOrder="20" title="Delete Menu"/>
+					<resource id="Xigen_Menu::Menu_update" sortOrder="30" title="Update Menu"/>
+					<resource id="Xigen_Menu::Menu_view" sortOrder="40" title="View Menu"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>

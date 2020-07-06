@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add action="xigen_menu/item/index" id="Xigen_Menu::xigen_menu_item" module="Xigen_Menu" parent="Xigen::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Item"/>
+		<add action="xigen_menu/menu/index" id="Xigen_Menu::xigen_menu_menu" module="Xigen_Menu" parent="Xigen::top_level" resource="Magento_Backend::content" sortOrder="9999" title="Menu"/>
+	</menu>
+</config>
