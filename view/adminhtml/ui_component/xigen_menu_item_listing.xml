@@ -1,206 +1,215 @@
 <?xml version="1.0" ?>
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
-	<settings>
-		<buttons>
-			<button name="add">
-				<url path="*/*/new"/>
-				<class>primary</class>
-				<label translate="true">Add new Item</label>
-			</button>
-		</buttons>
-		<spinner>xigen_menu_item_columns</spinner>
-		<deps>
-			<dep>xigen_menu_item_listing.xigen_menu_item_listing_data_source</dep>
-		</deps>
-	</settings>
-	<columns name="xigen_menu_item_columns">
-		<column name="menu_id">
-			<settings>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<actionsColumn class="Xigen\Menu\Ui\Component\Listing\Column\ItemActions" name="actions">
-			<settings>
-				<indexField>item_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
-		<settings>
-			<editorConfig>
-				<param name="selectProvider" xsi:type="string">xigen_menu_item_listing.xigen_menu_item_listing.xigen_menu_item_columns.ids</param>
-				<param name="enabled" xsi:type="boolean">true</param>
-				<param name="indexField" xsi:type="string">item_id</param>
-				<param name="clientConfig" xsi:type="array">
-					<item name="saveUrl" path="xigen_menu/Item/inlineEdit" xsi:type="url"/>
-					<item name="validateBeforeSave" xsi:type="boolean">false</item>
-				</param>
-			</editorConfig>
-			<childDefaults>
-				<param name="fieldAction" xsi:type="array">
-					<item name="provider" xsi:type="string">xigen_menu_item_listing.xigen_menu_item_listing.xigen_menu_item_columns_editor</item>
-					<item name="target" xsi:type="string">startEdit</item>
-					<item name="params" xsi:type="array">
-						<item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
-						<item name="1" xsi:type="boolean">true</item>
-					</item>
-				</param>
-			</childDefaults>
-		</settings>
-		<selectionsColumn name="ids">
-			<settings>
-				<indexField>item_id</indexField>
-			</settings>
-		</selectionsColumn>
-		<column name="item_id">
-			<settings>
-				<filter>text</filter>
-				<sorting>asc</sorting>
-				<label translate="true">ID</label>
-			</settings>
-		</column>
-		<column name="parent_id">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">parent_id</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="title">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">title</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="identifier">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">identifier</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="url">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">url</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="open_type">
-			<settings>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="url_type">
-			<settings>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="cms_page_identifier">
-			<settings>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="category_id">
-			<settings>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="position">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">position</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-		<column name="is_active">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">is_active</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">false</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
-	</columns>
-	<argument name="data" xsi:type="array">
-		<item name="js_config" xsi:type="array">
-			<item name="provider" xsi:type="string">xigen_menu_item_listing.xigen_menu_item_listing_data_source</item>
-		</item>
-	</argument>
-	<dataSource component="Magento_Ui/js/grid/provider" name="xigen_menu_item_listing_data_source">
-		<settings>
-			<updateUrl path="mui/index/render"/>
-		</settings>
-		<aclResource>Xigen_Menu::Item</aclResource>
-		<dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="xigen_menu_item_listing_data_source">
-			<settings>
-				<requestFieldName>id</requestFieldName>
-				<primaryFieldName>item_id</primaryFieldName>
-			</settings>
-		</dataProvider>
-	</dataSource>
-	<listingToolbar name="listing_top">
-		<settings>
-			<sticky>true</sticky>
-		</settings>
-		<bookmark name="bookmarks"/>
-		<columnsControls name="columns_controls"/>
-		<filters name="listing_filters"/>
-		<paging name="listing_paging"/>
-	</listingToolbar>
+    <settings>
+        <buttons>
+            <button name="add">
+                <url path="*/*/new"/>
+                <class>primary</class>
+                <label translate="true">Add new Item</label>
+            </button>
+        </buttons>
+        <spinner>xigen_menu_item_columns</spinner>
+        <deps>
+            <dep>xigen_menu_item_listing.xigen_menu_item_listing_data_source</dep>
+        </deps>
+    </settings>
+    <columns name="xigen_menu_item_columns">
+        <column name="menu_id">
+            <settings>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <settings>
+            <editorConfig>
+                <param name="selectProvider" xsi:type="string">xigen_menu_item_listing.xigen_menu_item_listing.xigen_menu_item_columns.ids</param>
+                <param name="enabled" xsi:type="boolean">true</param>
+                <param name="indexField" xsi:type="string">item_id</param>
+                <param name="clientConfig" xsi:type="array">
+                    <item name="saveUrl" path="xigen_menu/Item/inlineEdit" xsi:type="url"/>
+                    <item name="validateBeforeSave" xsi:type="boolean">false</item>
+                </param>
+            </editorConfig>
+            <childDefaults>
+                <param name="fieldAction" xsi:type="array">
+                    <item name="provider" xsi:type="string">xigen_menu_item_listing.xigen_menu_item_listing.xigen_menu_item_columns_editor</item>
+                    <item name="target" xsi:type="string">startEdit</item>
+                    <item name="params" xsi:type="array">
+                        <item name="0" xsi:type="string">${ $.$data.rowIndex }</item>
+                        <item name="1" xsi:type="boolean">true</item>
+                    </item>
+                </param>
+            </childDefaults>
+        </settings>
+        <selectionsColumn name="ids">
+            <settings>
+                <indexField>item_id</indexField>
+            </settings>
+        </selectionsColumn>
+        <column name="item_id">
+            <settings>
+                <filter>text</filter>
+                <sorting>asc</sorting>
+                <label translate="true">ID</label>
+            </settings>
+        </column>
+        <column name="parent_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Parent ID</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="title">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Title</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="identifier">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Identifier</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="url">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">URL</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="open_type" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Xigen\Announce\Model\Config\Source\OpenType"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">Open Type</label>
+                <editor>
+                    <editorType>select</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="url_type" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Xigen\Announce\Model\Config\Source\UrlType"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">URL Type</label>
+                <editor>
+                    <editorType>select</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="cms_page_identifier">
+            <settings>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="category_id">
+            <settings>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="position">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Position</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <column name="is_active" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Xigen\Announce\Model\Config\Source\Yesno"/>
+                <filter>select</filter>
+                <label translate="true">Status</label>
+                <editor>
+                    <editorType>text</editorType>
+                    <validation>
+                        <rule name="required-entry" xsi:type="boolean">false</rule>
+                    </validation>
+                </editor>
+            </settings>
+        </column>
+        <actionsColumn class="Xigen\Menu\Ui\Component\Listing\Column\ItemActions" name="actions">
+            <settings>
+                <indexField>item_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">xigen_menu_item_listing.xigen_menu_item_listing_data_source</item>
+        </item>
+    </argument>
+    <dataSource component="Magento_Ui/js/grid/provider" name="xigen_menu_item_listing_data_source">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Xigen_Menu::Item</aclResource>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="xigen_menu_item_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>item_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+        <columnsControls name="columns_controls"/>
+        <filters name="listing_filters"/>
+        <paging name="listing_paging"/>
+    </listingToolbar>
 </listing>

@@ -14,6 +14,7 @@ namespace Xigen\Menu\Setup;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\InstallSchemaInterface;
+use Magento\Framework\DB\Ddl\Table;
 
 class InstallSchema implements InstallSchemaInterface
 {
@@ -29,15 +30,15 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'item_id',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            Table::TYPE_INTEGER,
             null,
-            ['identity' => true,'nullable' => false,'primary' => true,'unsigned' => true,],
+            ['identity' => true,'nullable' => false,'primary' => true,'unsigned' => true],
             'Entity ID'
         );
 
         $table_xigen_menu_item->addColumn(
             'menu_id',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            Table::TYPE_INTEGER,
             null,
             [],
             'Menu ID'
@@ -45,7 +46,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'parent_id',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            Table::TYPE_INTEGER,
             null,
             [],
             'Parent ID'
@@ -53,7 +54,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'title',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            Table::TYPE_TEXT,
             255,
             [],
             'Title'
@@ -61,7 +62,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'identifier',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            Table::TYPE_TEXT,
             255,
             [],
             'Identifier'
@@ -69,7 +70,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'url',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            Table::TYPE_TEXT,
             255,
             [],
             'URL'
@@ -77,7 +78,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'open_type',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            Table::TYPE_INTEGER,
             null,
             [],
             'Open Type'
@@ -85,7 +86,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'url_type',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            Table::TYPE_TEXT,
             255,
             [],
             'URL Type'
@@ -93,7 +94,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'cms_page_identifier',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            Table::TYPE_TEXT,
             255,
             [],
             'CMS Page Identifier'
@@ -101,7 +102,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'category_id',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            Table::TYPE_INTEGER,
             null,
             [],
             'Category ID'
@@ -109,7 +110,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'position',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            Table::TYPE_INTEGER,
             null,
             [],
             'Position'
@@ -117,7 +118,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_item->addColumn(
             'is_active',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            Table::TYPE_INTEGER,
             null,
             [],
             'Is Active'
@@ -127,15 +128,15 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_menu->addColumn(
             'menu_id',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            Table::TYPE_INTEGER,
             null,
-            ['identity' => true,'nullable' => false,'primary' => true,'unsigned' => true,],
+            ['identity' => true,'nullable' => false,'primary' => true,'unsigned' => true],
             'Entity ID'
         );
 
         $table_xigen_menu_menu->addColumn(
             'identifier',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            Table::TYPE_TEXT,
             255,
             [],
             'Identifier'
@@ -143,7 +144,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_menu->addColumn(
             'title',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            Table::TYPE_TEXT,
             255,
             [],
             'Title'
@@ -151,7 +152,7 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_menu->addColumn(
             'css_class',
-            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            Table::TYPE_TEXT,
             255,
             [],
             'CSS Class'
@@ -159,14 +160,34 @@ class InstallSchema implements InstallSchemaInterface
 
         $table_xigen_menu_menu->addColumn(
             'is_active',
-            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            Table::TYPE_INTEGER,
             null,
             [],
             'Is Active'
         );
 
+        $table_xigen_menu_store = $setup->getConnection()->newTable($setup->getTable('xigen_menu_store'));
+
+        $table_xigen_menu_store->addColumn(
+            'menu_id',
+            Table::TYPE_SMALLINT,
+            null,
+            ['unsigned' => true, 'nullable' => false, 'primary' => true],
+            'Menu ID'
+        );
+
+        $table_xigen_menu_store->addColumn(
+            'store_id',
+            Table::TYPE_SMALLINT,
+            null,
+            ['unsigned' => true, 'nullable' => false, 'primary' => true],
+            'Store ID'
+        );
+        
         $setup->getConnection()->createTable($table_xigen_menu_menu);
 
         $setup->getConnection()->createTable($table_xigen_menu_item);
+        
+        $setup->getConnection()->createTable($table_xigen_menu_store);
     }
 }

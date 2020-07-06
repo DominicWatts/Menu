@@ -19,6 +19,8 @@
     ],
     "require": {
         "magento/framework": "*",
+        "magento/module-backend": "*",
+        "magento/ui": "*",
         "php": "~7.0.0||~7.1.0||~7.2.0||~7.3.0"
     },
     "autoload": {
