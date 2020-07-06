@@ -20,4 +20,3 @@ class Item extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
         $this->_init('xigen_menu_item', 'item_id');
     }
 }
-

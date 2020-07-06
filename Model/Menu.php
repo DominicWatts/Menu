@@ -10,6 +10,7 @@ namespace Xigen\Menu\Model;
 use Magento\Framework\Api\DataObjectHelper;
 use Xigen\Menu\Api\Data\MenuInterface;
 use Xigen\Menu\Api\Data\MenuInterfaceFactory;
+use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory;
 
 class Menu extends \Magento\Framework\Model\AbstractModel
 {
@@ -19,6 +20,11 @@ class Menu extends \Magento\Framework\Model\AbstractModel
     protected $dataObjectHelper;
 
     protected $_eventPrefix = 'xigen_menu_menu';
+
+    /**
+     * @var CollectionFactory
+     */
+    protected $itemCollectionFactory;
 
     /**
      * @param \Magento\Framework\Model\Context $context
@@ -36,10 +42,12 @@ class Menu extends \Magento\Framework\Model\AbstractModel
         DataObjectHelper $dataObjectHelper,
         \Xigen\Menu\Model\ResourceModel\Menu $resource,
         \Xigen\Menu\Model\ResourceModel\Menu\Collection $resourceCollection,
+        CollectionFactory $itemCollectionFactory,
         array $data = []
     ) {
         $this->menuDataFactory = $menuDataFactory;
         $this->dataObjectHelper = $dataObjectHelper;
+        $this->itemCollectionFactory = $itemCollectionFactory;
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
 
@@ -60,5 +68,20 @@ class Menu extends \Magento\Framework\Model\AbstractModel
         
         return $menuDataObject;
     }
-}
 
+    /**
+     * Get messages collection
+     * @return CollectionFactory
+     */
+    public function getItemCollection()
+    {
+        $collection = $this->itemCollectionFactory->create()
+            ->addMenuFilter($this->getMenuId());
+        if ($this->getId()) {
+            foreach ($collection as $item) {
+                $item->setMenu($this);
+            }
+        }
+        return $collection;
+    }
+}

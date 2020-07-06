@@ -20,6 +20,16 @@ class Item extends \Magento\Framework\Model\AbstractModel
     protected $itemDataFactory;
 
     /**
+     * @var \Xigen\Menu\Model\Menu
+     */
+    protected $menu;
+
+    /**
+     * @var \Xigen\Menu\Model\MenuFactory
+     */
+    protected $menuFactory;
+
+    /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param ItemInterfaceFactory $itemDataFactory
@@ -35,10 +45,12 @@ class Item extends \Magento\Framework\Model\AbstractModel
         DataObjectHelper $dataObjectHelper,
         \Xigen\Menu\Model\ResourceModel\Item $resource,
         \Xigen\Menu\Model\ResourceModel\Item\Collection $resourceCollection,
+        \Xigen\Menu\Model\MenuFactory $menuFactory,
         array $data = []
     ) {
         $this->itemDataFactory = $itemDataFactory;
         $this->dataObjectHelper = $dataObjectHelper;
+        $this->menuFactory = $menuFactory;
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
 
@@ -59,5 +71,29 @@ class Item extends \Magento\Framework\Model\AbstractModel
         
         return $itemDataObject;
     }
-}
 
+    /**
+     * Set menu
+     * @param \Xigen\Menu\Model\Menu $group
+     * @return $this
+     */
+    public function setMenu(\Xigen\Menu\Model\Menu $menu)
+    {
+        $this->menu = $menu;
+        return $this;
+    }
+
+    /**
+     * Get group
+     * @return \Xigen\Announce\Model\Group
+     */
+    public function getMenu()
+    {
+        if (!$this->menu) {
+            $this->menu = $this->menuFactory
+                ->create()
+                ->load($this->getMenuId());
+        }
+        return $this->menu;
+    }
+}
