@@ -126,5 +126,24 @@ class Menu extends \Magento\Framework\Api\AbstractExtensibleObject implements Me
     {
         return $this->setData(self::IS_ACTIVE, $isActive);
     }
+
+    /**
+     * Get store_id
+     * @return string|null
+     */
+    public function getStoreId()
+    {
+        return $this->_get(self::STORE_ID);
+    }
+
+    /**
+     * Set store_id
+     * @param string $storeId
+     * @return \Xigen\Menu\Api\Data\MenuInterface
+     */
+    public function setStoreId($storeId)
+    {
+        return $this->setData(self::STORE_ID, $storeId);
+    }
 }
 

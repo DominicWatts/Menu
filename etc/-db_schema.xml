@@ -5,26 +5,27 @@
 		<constraint referenceId="PRIMARY" xsi:type="primary">
 			<column name="item_id"/>
 		</constraint>
-		<column identity="false" name="menu_id" nullable="true" xsi:type="int"/>
-		<column identity="false" name="parent_id" nullable="true" xsi:type="int"/>
-		<column length="255" name="title" nullable="true" xsi:type="varchar"/>
-		<column length="255" name="identifier" nullable="true" xsi:type="varchar"/>
-		<column length="255" name="url" nullable="true" xsi:type="varchar"/>
-		<column identity="false" name="open_type" nullable="true" xsi:type="int"/>
-		<column length="255" name="url_type" nullable="true" xsi:type="varchar"/>
-		<column length="255" name="cms_page_identifier" nullable="true" xsi:type="varchar"/>
-		<column identity="false" name="category_id" nullable="true" xsi:type="int"/>
-		<column identity="false" name="position" nullable="true" xsi:type="int"/>
-		<column identity="false" name="is_active" nullable="true" xsi:type="int"/>
+		<column comment="Menu ID" identity="false" name="menu_id" nullable="true" xsi:type="int"/>
+		<column comment="Parent ID" identity="false" name="parent_id" nullable="true" xsi:type="int"/>
+		<column comment="Title" length="255" name="title" nullable="true" xsi:type="varchar"/>
+		<column comment="Identifier" length="255" name="identifier" nullable="true" xsi:type="varchar"/>
+		<column comment="URL" length="255" name="url" nullable="true" xsi:type="varchar"/>
+		<column comment="Open Type" identity="false" name="open_type" nullable="true" xsi:type="int"/>
+		<column comment="URL Type" length="255" name="url_type" nullable="true" xsi:type="varchar"/>
+		<column comment="CMS Page Identifier" length="255" name="cms_page_identifier" nullable="true" xsi:type="varchar"/>
+		<column comment="Category ID" identity="false" name="category_id" nullable="true" xsi:type="int"/>
+		<column comment="Position" identity="false" name="position" nullable="true" xsi:type="int"/>
+		<column comment="Is Active" identity="false" name="is_active" nullable="true" xsi:type="int"/>
 	</table>
 	<table comment="xigen_menu_menu Table" engine="innodb" name="xigen_menu_menu" resource="default">
 		<column comment="Entity Id" identity="true" name="menu_id" nullable="false" padding="6" unsigned="true" xsi:type="smallint"/>
 		<constraint referenceId="PRIMARY" xsi:type="primary">
 			<column name="menu_id"/>
 		</constraint>
-		<column length="255" name="identifier" nullable="true" xsi:type="varchar"/>
-		<column length="255" name="title" nullable="true" xsi:type="varchar"/>
-		<column length="255" name="css_class" nullable="true" xsi:type="varchar"/>
-		<column identity="false" name="is_active" nullable="true" xsi:type="int"/>
+        <column comment="Store ID" length="255" name="store_id" nullable="true" xsi:type="varchar"/>
+		<column comment="Identifier" length="255" name="identifier" nullable="true" xsi:type="varchar"/>
+		<column comment="Title" length="255" name="title" nullable="true" xsi:type="varchar"/>
+		<column comment="CSS Class" length="255" name="css_class" nullable="true" xsi:type="varchar"/>
+		<column comment="Is Active" identity="false" name="is_active" nullable="true" xsi:type="int"/>
 	</table>
 </schema>

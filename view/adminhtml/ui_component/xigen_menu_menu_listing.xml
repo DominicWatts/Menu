@@ -73,6 +73,14 @@
                 <label translate="true">ID</label>
             </settings>
         </column>
+        <column name="store_id" component="Magento_Ui/js/grid/columns/select" sortOrder="60">
+            <settings>
+                <filter>select</filter>
+                <options class="Magento\Theme\Model\Scope\StoreSource"/>
+                <dataType>select</dataType>
+                <label translate="true">Store View</label>
+            </settings>
+        </column>
         <column name="identifier">
             <settings>
                 <filter>text</filter>

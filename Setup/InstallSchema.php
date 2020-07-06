@@ -135,6 +135,14 @@ class InstallSchema implements InstallSchemaInterface
         );
 
         $table_xigen_menu_menu->addColumn(
+            'store_id',
+            Table::TYPE_TEXT,
+            255,
+            [],
+            'Store ID'
+        );
+
+        $table_xigen_menu_menu->addColumn(
             'identifier',
             Table::TYPE_TEXT,
             255,
@@ -165,29 +173,9 @@ class InstallSchema implements InstallSchemaInterface
             [],
             'Is Active'
         );
-
-        $table_xigen_menu_store = $setup->getConnection()->newTable($setup->getTable('xigen_menu_store'));
-
-        $table_xigen_menu_store->addColumn(
-            'menu_id',
-            Table::TYPE_SMALLINT,
-            null,
-            ['unsigned' => true, 'nullable' => false, 'primary' => true],
-            'Menu ID'
-        );
-
-        $table_xigen_menu_store->addColumn(
-            'store_id',
-            Table::TYPE_SMALLINT,
-            null,
-            ['unsigned' => true, 'nullable' => false, 'primary' => true],
-            'Store ID'
-        );
-        
+       
         $setup->getConnection()->createTable($table_xigen_menu_menu);
-
         $setup->getConnection()->createTable($table_xigen_menu_item);
-        
-        $setup->getConnection()->createTable($table_xigen_menu_store);
+
     }
 }

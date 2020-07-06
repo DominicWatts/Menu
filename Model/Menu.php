@@ -69,6 +69,16 @@ class Menu extends \Magento\Framework\Model\AbstractModel
         return $menuDataObject;
     }
 
+     /**
+     * Before save
+     */
+    public function beforeSave()
+    {
+        if (is_array($this->getData(MenuInterface::STORE_ID))) {
+            $this->setStoreId(implode(',', $this->getData(MenuInterface::STORE_ID)));
+        }
+    }
+
     /**
      * Get messages collection
      * @return CollectionFactory

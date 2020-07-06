@@ -30,6 +30,11 @@ class Item extends \Magento\Framework\Model\AbstractModel
     protected $menuFactory;
 
     /**
+     * @var \Xigen\Menu\Model\ItemFactory
+     */
+    protected $itemFactory;
+
+    /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param ItemInterfaceFactory $itemDataFactory
@@ -46,11 +51,13 @@ class Item extends \Magento\Framework\Model\AbstractModel
         \Xigen\Menu\Model\ResourceModel\Item $resource,
         \Xigen\Menu\Model\ResourceModel\Item\Collection $resourceCollection,
         \Xigen\Menu\Model\MenuFactory $menuFactory,
+        \Xigen\Menu\Model\ItemFactory $itemFactory,
         array $data = []
     ) {
         $this->itemDataFactory = $itemDataFactory;
         $this->dataObjectHelper = $dataObjectHelper;
         $this->menuFactory = $menuFactory;
+        $this->itemFactory = $itemFactory;
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
     }
 
@@ -85,7 +92,7 @@ class Item extends \Magento\Framework\Model\AbstractModel
 
     /**
      * Get group
-     * @return \Xigen\Announce\Model\Group
+     * @return \Xigen\Menu\Model\Menu
      */
     public function getMenu()
     {
@@ -96,4 +103,27 @@ class Item extends \Magento\Framework\Model\AbstractModel
         }
         return $this->menu;
     }
+    /**
+     * Load parent ID
+     * @return \Xigen\Menu\Model\Item
+     */
+    public function getParent()
+    {
+        if (!$this->parent) {
+            $this->parent = $this->itemFactory
+                ->create()
+                ->load($this->getParentId());
+        }
+        return $this->parent;
+    }
+
+    /**
+     * Is Child function
+     * @return bool
+     */
+    public function hasParent()
+    {
+        return (bool) $this->getParent();
+    }
+
 }

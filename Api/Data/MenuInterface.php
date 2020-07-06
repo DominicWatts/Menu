@@ -15,6 +15,7 @@ interface MenuInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     const MENU_ID = 'menu_id';
     const CSS_CLASS = 'css_class';
     const IDENTIFIER = 'identifier';
+    const STORE_ID = 'store_id';
 
     /**
      * Get menu_id
@@ -95,5 +96,18 @@ interface MenuInterface extends \Magento\Framework\Api\ExtensibleDataInterface
      * @return \Xigen\Menu\Api\Data\MenuInterface
      */
     public function setIsActive($isActive);
+
+    /**
+     * Get store_id
+     * @return string|null
+     */
+    public function getStoreId();
+
+    /**
+     * Set store_id
+     * @param string $storeId
+     * @return \Xigen\Menu\Api\Data\MenuInterface
+     */
+    public function setStoreId($storeId);
 }
 
