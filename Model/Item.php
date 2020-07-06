@@ -100,6 +100,28 @@ class Item extends \Magento\Framework\Model\AbstractModel
     }
 
     /**
+     * Before save
+     */
+    public function beforeSave()
+    {
+        if ($category = $this->getData(ItemInterface::CATEGORY_ID)) {
+            $cleanCategory = null;
+            if (is_array($category)) {
+                $cleanCategory = [];
+                foreach ($category as $item) {
+                    if (!empty($item) && $item != ',') {
+                        $cleanCategory[$item] = $item;
+                    }
+                }
+            } elseif (is_string($category)) {
+                $cleanCategory = explode(',', $category);
+            }
+            $this->setCategoryId(implode(',', array_filter($cleanCategory)));
+        }
+        return parent::beforeSave();
+    }
+
+    /**
      * Set menu
      * @param \Xigen\Menu\Model\Menu $group
      * @return $this

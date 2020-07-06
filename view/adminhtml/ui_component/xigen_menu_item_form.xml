@@ -168,6 +168,7 @@
         <field name="category_id" component="Magento_Catalog/js/components/new-category" sortOrder="90" formElement="select">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Item</item>
                     <item name="filterOptions" xsi:type="boolean">true</item>
                     <item name="multiple" xsi:type="boolean">false</item>
                     <item name="showCheckbox" xsi:type="boolean">true</item>
@@ -182,7 +183,7 @@
                 </validation>
                 <elementTmpl>ui/grid/filters/elements/ui-select</elementTmpl>
                 <label translate="true">Category</label>
-                <dataScope>category</dataScope>
+                <dataScope>category_id</dataScope>
                 <componentType>field</componentType>
                 <listens>
                     <link name="${ $.namespace }.${ $.namespace }:responseData">setParsed</link>
