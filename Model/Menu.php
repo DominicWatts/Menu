@@ -8,12 +8,12 @@ declare(strict_types=1);
 namespace Xigen\Menu\Model;
 
 use Magento\Framework\Api\DataObjectHelper;
-use Xigen\Menu\Api\Data\MenuInterface;
-use Xigen\Menu\Api\Data\MenuInterfaceFactory;
-use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Registry;
+use Xigen\Menu\Api\Data\MenuInterface;
+use Xigen\Menu\Api\Data\MenuInterfaceFactory;
+use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory;
 
 class Menu extends AbstractModel
 {

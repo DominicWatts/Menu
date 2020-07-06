@@ -10,15 +10,13 @@ namespace Xigen\Menu\Model;
 use Magento\Catalog\Model\CategoryRepository;
 use Magento\Cms\Helper\Page;
 use Magento\Framework\Api\DataObjectHelper;
+use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Model\Context;
+use Magento\Framework\Registry;
 use Magento\Framework\UrlInterface;
 use Xigen\Menu\Api\Data\ItemInterface;
 use Xigen\Menu\Api\Data\ItemInterfaceFactory;
 use Xigen\Menu\Helper\Data;
-use Magento\Framework\Model\AbstractModel;
-use Magento\Framework\Model\Context;
-use Magento\Framework\Registry;
-use Xigen\Menu\Model\MenuFactory;
-use Xigen\Menu\Model\ItemFactory;
 
 class Item extends AbstractModel
 {
