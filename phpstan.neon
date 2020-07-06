@@ -1,0 +1,9 @@
+
+parameters:
+    level: 0
+    excludes_analyse:
+        - 'vendor'
+    ignoreErrors:
+        - '#invalid typehint#'
+        - '#unknown class#'
+    reportUnmatchedIgnoredErrors: false
