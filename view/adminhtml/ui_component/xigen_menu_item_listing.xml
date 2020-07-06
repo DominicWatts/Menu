@@ -110,7 +110,6 @@
             <settings>
                 <options class="Xigen\Menu\Model\Config\Source\OpenType"/>
                 <filter>select</filter>
-                <dataType>select</dataType>
                 <label translate="true">Open Type</label>
                 <editor>
                     <editorType>select</editorType>
@@ -124,7 +123,6 @@
             <settings>
                 <options class="Xigen\Menu\Model\Config\Source\UrlType"/>
                 <filter>select</filter>
-                <dataType>select</dataType>
                 <label translate="true">URL Type</label>
                 <editor>
                     <editorType>select</editorType>

@@ -19,7 +19,6 @@ class Item extends \Magento\Framework\Model\AbstractModel
     protected $_eventPrefix = 'xigen_menu_item';
     protected $itemDataFactory;
 
-
     /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
