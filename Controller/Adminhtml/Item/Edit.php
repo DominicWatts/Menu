@@ -56,7 +56,9 @@ class Edit extends \Xigen\Menu\Controller\Adminhtml\Item
             $id ? __('Edit Item') : __('New Item')
         );
         $resultPage->getConfig()->getTitle()->prepend(__('Items'));
-        $resultPage->getConfig()->getTitle()->prepend($model->getId() ? __('Edit Item %1', $model->getId()) : __('New Item'));
+        $resultPage->getConfig()->getTitle()->prepend(
+            $model->getId() ? __('Edit Item %1', $model->getId()) : __('New Item')
+        );
         return $resultPage;
     }
 }
