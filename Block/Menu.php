@@ -356,7 +356,7 @@ class Menu extends Template implements IdentityInterface
     protected function _getTrimmedPath($url)
     {
         if ($url) {
-            $url = parse_url($url);
+            $url = parse_url($url); //phpcs:ignore
 
             if (isset($url['path'])) {
                 return rtrim($url['path'], '/');

@@ -53,7 +53,7 @@ class CategoryId extends Column
                 $prefix = '';
                 if ($category && $category->getName()) {
 
-                    for ($count=0; $count < $category->getLevel(); $count++) {
+                    for ($count=0; $count < $category->getLevel(); $count++) { //phpcs:ignore
                         $prefix .= '-';
                     }
 

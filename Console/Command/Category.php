@@ -159,7 +159,7 @@ class Category extends Command
             $helper = $this->getHelper('question');
             $question = new ConfirmationQuestion(
                 (string) __(
-                    'You are about to generate tree for store ID: %1 and save as menu ID: %2 losing existing items. Are you sure? [y/N]',
+                    'You are about to generate tree for store ID: %1 and save as menu ID: %2 losing existing items. Are you sure? [y/N]', //phpcs:ignore
                     $store,
                     $menu
                 ),
@@ -177,7 +177,7 @@ class Category extends Command
             $this->clearMenuItems($menu);
 
             $this->output->writeln('[' . $this->dateTime->gmtDate() . '] Generating');
-            $categories = $this->helper->getStoreCategories(false,true,true);
+            $categories = $this->helper->getStoreCategories(false, true, true);
 
             /** @var ProgressBar $progress */
             $progress = $this->progressBarFactory->create(
@@ -259,7 +259,7 @@ class Category extends Command
                     try {
                         $item->setParentId($parentItem->getItemId());
                         $item->save();
-                    } catch(\Exception $e) {
+                    } catch (\Exception $e) {
                         $this->logger->critical($e);
                     }
                 }
