@@ -216,10 +216,11 @@ class Category extends Command
                 $progress->advance();
             }
 
+            $progress->finish();
+
             $this->output->writeln('[' . $this->dateTime->gmtDate() . '] Linking');
             $this->associateItems($menu);
-
-            $progress->finish();
+            
             $this->output->writeln('');
             $this->output->writeln('[' . $this->dateTime->gmtDate() . '] Finish');
 
@@ -244,7 +245,7 @@ class Category extends Command
             ->setTitle($category->getName())
             ->setIdentifier($category->getUrlKey())
             ->setOpenType(Data::SAME_WINDOW)
-            ->setUrlType(Data::CATEGORY_TEXT)
+            ->setUrlType(Data::CATEGORY)
             ->setCategoryId($category->getId())
             ->setPosition($category->getPosition())
             ->setIsActive($category->getIsActive());
