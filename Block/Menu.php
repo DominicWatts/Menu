@@ -249,7 +249,7 @@ class Menu extends Template implements IdentityInterface
                 $child->setClass($outermostClass);
             }
 
-            if(is_object($colBrakes) || is_array($colBrakes)) {
+            if (is_object($colBrakes) || is_array($colBrakes)) {
                 if (count($colBrakes) && $colBrakes[$counter]['colbrake']) {
                     $html .= '</ul></li><li class="column"><ul>';
                 }
@@ -268,7 +268,7 @@ class Menu extends Template implements IdentityInterface
             $counter++;
         }
 
-        if(is_object($colBrakes) || is_array($colBrakes)) {
+        if (is_object($colBrakes) || is_array($colBrakes)) {
             if (count($colBrakes) && $limit) {
                 $html = '<li class="column"><ul>' . $html . '</ul></li>';
             }
