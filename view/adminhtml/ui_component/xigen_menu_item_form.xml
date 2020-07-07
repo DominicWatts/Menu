@@ -134,38 +134,7 @@
                 </validation>
             </settings>
         </field>
-        <field formElement="input" name="url" sortOrder="70">
-            <argument name="data" xsi:type="array">
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Item</item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">Custom URL</label>
-                <dataScope>url</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
-            </settings>
-        </field>
-        <field formElement="select" name="cms_page_identifier" sortOrder="80">
-            <argument name="data" xsi:type="array">
-                <item name="options" xsi:type="object">Xigen\Menu\Model\Config\Source\Page</item>
-                <item name="config" xsi:type="array">
-                    <item name="source" xsi:type="string">Item</item>
-                </item>
-            </argument>
-            <settings>
-                <dataType>text</dataType>
-                <label translate="true">CMS Page Identifier</label>
-                <dataScope>cms_page_identifier</dataScope>
-                <validation>
-                    <rule name="required-entry" xsi:type="boolean">false</rule>
-                </validation>
-            </settings>
-        </field>
-        <field name="category_id" component="Magento_Catalog/js/components/new-category" sortOrder="90" formElement="select">
+        <field name="category_id" component="Magento_Catalog/js/components/new-category" sortOrder="70" formElement="select">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">Item</item>
@@ -196,6 +165,37 @@
                     </settings>
                 </select>
             </formElements>
+        </field>
+        <field formElement="input" name="url" sortOrder="80">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Item</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Custom URL</label>
+                <dataScope>url</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
+        </field>
+        <field formElement="select" name="cms_page_identifier" sortOrder="90">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Xigen\Menu\Model\Config\Source\Page</item>
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">Item</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">CMS Page Identifier</label>
+                <dataScope>cms_page_identifier</dataScope>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">false</rule>
+                </validation>
+            </settings>
         </field>
         <field formElement="input" name="position" sortOrder="100">
             <argument name="data" xsi:type="array">

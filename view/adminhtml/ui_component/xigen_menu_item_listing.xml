@@ -73,32 +73,20 @@
                 <label translate="true">ID</label>
             </settings>
         </column>
-        <column name="menu_id">
+        <column name="menu_id" class="Xigen\Menu\Ui\Component\Listing\Column\MenuId">
             <settings>
                 <options class="Xigen\Menu\Model\Config\Source\Menu"/>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Menu ID</label>
-                <editor>
-                    <editorType>select</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">true</rule>
-                    </validation>
-                </editor>
             </settings>
         </column>
-        <column name="parent_id">
+        <column name="parent_id" class="Xigen\Menu\Ui\Component\Listing\Column\ParentId">
             <settings>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <options class="Xigen\Menu\Model\Config\Source\Item"/>
                 <label translate="true">Parent ID</label>
-                <editor>
-                    <editorType>select</editorType>
-                    <validation>
-                        <rule name="required-entry" xsi:type="boolean">true</rule>
-                    </validation>
-                </editor>
             </settings>
         </column>
         <column name="title">
@@ -125,6 +113,22 @@
                 </editor>
             </settings>
         </column>
+        <column name="url_type" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Xigen\Menu\Model\Config\Source\UrlType"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">URL Type</label>
+            </settings>
+        </column>
+        <column name="category_id" class="Xigen\Menu\Ui\Component\Listing\Column\CategoryId">
+            <settings>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <options class="Xigen\Menu\Model\Config\Source\Category"/>
+                <label translate="true">Category</label>
+            </settings>
+        </column>
         <column name="url">
             <settings>
                 <filter>text</filter>
@@ -135,6 +139,14 @@
                         <rule name="required-entry" xsi:type="boolean">false</rule>
                     </validation>
                 </editor>
+            </settings>
+        </column>
+        <column name="cms_page_identifier" component="Magento_Ui/js/grid/columns/select">
+            <settings>
+                <options class="Xigen\Menu\Model\Config\Source\Page"/>
+                <filter>select</filter>
+                <dataType>select</dataType>
+                <label translate="true">CMS Page</label>
             </settings>
         </column>
         <column name="position">

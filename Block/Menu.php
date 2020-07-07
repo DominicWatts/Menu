@@ -20,6 +20,7 @@ use Magento\Framework\DataObject;
 use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory as ItemCollectionFactory;
 use Xigen\Menu\Model\ResourceModel\Menu\CollectionFactory as MenuCollectionFactory;
 use Xigen\Menu\Helper\Data;
+use Magento\Catalog\Model\CategoryFactory;
 
 class Menu extends Template implements IdentityInterface
 {
@@ -74,6 +75,11 @@ class Menu extends Template implements IdentityInterface
     protected $_menuItemCollection;
 
     /**
+     * @var \Magento\Catalog\Model\CategoryFactory
+     */
+    protected $categoryFactory;
+
+    /**
      * @param Template\Context $context
      * @param NodeFactory $nodeFactory
      * @param TreeFactory $treeFactory
@@ -93,6 +99,7 @@ class Menu extends Template implements IdentityInterface
         CollectionFactory $categoryCollectionFactory,
         ItemCollectionFactory $itemCollectionFactory,
         MenuCollectionFactory $menuCollectionFactory,
+        CategoryFactory $categoryFactory,
         array $data = []
     ) {
         parent::__construct($context, $data);
@@ -118,6 +125,7 @@ class Menu extends Template implements IdentityInterface
 
         $this->itemCollectionFactory = $itemCollectionFactory;
         $this->menuCollectionFactory = $menuCollectionFactory;
+        $this->categoryFactory = $categoryFactory;
     }
 
     /**
@@ -608,7 +616,22 @@ class Menu extends Template implements IdentityInterface
      */
     protected function _isMenuItemActive($item)
     {
-        if ((int) $item->getUrlType() === 2 && !$item->getCategory()) {
+        $showCategory = true;
+        
+        // Check category status and menu visibility
+        // @todo Confirm
+        /*
+        if ($categoryId = $item->getCategoryId()) {
+            $category = $this->categoryFactory
+                ->create()
+                ->load($categoryId);
+            if (!$category->getIncludeInMenu() || !$category->isActive()) {
+                $showCategory = false;
+            }
+        }
+        */
+        
+        if ($item->getUrlType() == Data::CATEGORY && !$item->getCategoryId() && $showCategory) {
             return false;
         }
         return true;
@@ -635,7 +658,10 @@ class Menu extends Template implements IdentityInterface
                 $item->setFullUrl($this->_cmsPageHelper->getPageUrl($item->getCmsPageIdentifier()));
                 break;
             case Data::CATEGORY:
-                if ($category = $item->getCategory()) {
+                if ($categoryId = $item->getCategoryId()) {
+                    $category = $this->categoryFactory
+                        ->create()
+                        ->load($categoryId);
                     $item->setFullUrl($category->getUrl());
                 }
                 break;
