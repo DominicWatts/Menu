@@ -1,0 +1,22 @@
+<?php
+/**
+ * @author Dominic <dominic@xigen.co.uk>
+ */
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @var $block \Xigen\Menu\Block\Menu
+ */
+?>
+<?php $columnsLimit = $block->getColumnsLimit() ? $block->getColumnsLimit() : 0; ?>
+<?php $_menu = $block->getHtml('level-top', 'submenu', $columnsLimit) ?>
+
+<h1> here </h1>
+
+<nav class="navigation" role="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?php /* @escapeNotVerified */ echo $_menu; ?>
+    </ul>
+</nav>

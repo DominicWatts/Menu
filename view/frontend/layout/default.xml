@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchemainstance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- <referenceBlock name="catalog.topnav" remove="true"/> -->
+        <referenceBlock name="store.menu">
+            <block class="Xigen\Menu\Block\Menu" name="catalog.topnav" template="Xigen_Menu::html/menu.phtml">
+                <arguments>
+                    <argument name="identifier" xsi:type="string">xigen-menu</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+    </body>
+</page>

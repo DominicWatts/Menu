@@ -116,6 +116,19 @@ interface ItemInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     public function setUrl($url);
 
     /**
+     * Get url
+     * @return string|null
+     */
+    public function getFinalUrl();
+
+    /**
+     * Set url
+     * @param string $url
+     * @return \Xigen\Menu\Api\Data\ItemInterface
+     */
+    public function setFinalUrl($url);
+
+    /**
      * Get open_type
      * @return string|null
      */

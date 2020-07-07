@@ -22,7 +22,7 @@ class UrlType implements OptionSourceInterface
         return [
             ['value' => Data::CUSTOM_URL, 'label' => __(Data::CUSTOM_URL_TEXT)],
             ['value' => Data::CMS_PAGE, 'label' => __(Data::CMS_PAGE_TEXT)],
-            ['value' => Data::DISABLED, 'label' => __(Data::CATEGORY_TEXT)]
+            ['value' => Data::CATEGORY, 'label' => __(Data::CATEGORY_TEXT)]
         ];
         // phpcs:enable
     }
