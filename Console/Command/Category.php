@@ -216,12 +216,11 @@ class Category extends Command
                 $progress->advance();
             }
 
+            $this->output->writeln('');
             $progress->finish();
 
             $this->output->writeln('[' . $this->dateTime->gmtDate() . '] Linking');
             $this->associateItems($menu);
-            
-            $this->output->writeln('');
             $this->output->writeln('[' . $this->dateTime->gmtDate() . '] Finish');
 
         }
