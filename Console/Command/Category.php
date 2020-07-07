@@ -106,12 +106,23 @@ class Category extends Command
     protected $menuFactory;
 
     /**
-     * Category import.
-     * xigen:menu:category [-m|--menu MENU] [-s|--store STORE]
+     * @var HelperCategory
+     */
+    protected $helper;
+
+    /**
+     * Category constructor.
      * @param LoggerInterface $logger
      * @param State $state
      * @param DateTime $dateTime
      * @param ProgressBarFactory $progressBarFactory
+     * @param StoreManagerInterface $storeManager
+     * @param HelperCategory $helper
+     * @param ResourceConnection $resource
+     * @param ItemInterfaceFactory $itemInterfaceFactory
+     * @param ItemRepositoryInterface $itemRepositoryInterface
+     * @param Data $data
+     * @param MenuFactory $menuFactory
      */
     public function __construct(
         LoggerInterface $logger,
@@ -221,7 +232,7 @@ class Category extends Command
         if (!$category->getIsActive()) {
             return false;
         }
-        
+
         if (!$category->getIncludeInMenu()) {
             return false;
         }
@@ -251,7 +262,7 @@ class Category extends Command
         $items = $this->menuFactory->create()
             ->load($menu)
             ->getItemCollection();
-        
+
         foreach ($items as $item) {
             if ($category = $item->getCategory()) {
                 $parentItem = $this->data->getByMenuAndCategory($menu, $category->getParentId());

@@ -25,30 +25,21 @@ use Magento\Catalog\Model\CategoryFactory;
 class Menu extends Template implements IdentityInterface
 {
     /**
-     * Cache identities
-     *
      * @var array
      */
     protected $identities = [];
 
     /**
-     * Top menu data tree
-     *
      * @var \Magento\Framework\Data\Tree\Node
      */
     protected $_menu;
 
     /**
-     * CMS Page Helper
-     *
      * @var Page
      */
     protected $_cmsPageHelper;
 
     /**
-     * Mapping for categories
-     * example: item_id => category_id
-     *
      * @var array
      */
     protected $_categoryItemIds = [];
@@ -59,19 +50,48 @@ class Menu extends Template implements IdentityInterface
     protected $_nodeFactory;
 
     /**
-     * Core registry
-     *
      * @var $registry
      */
     protected $registry;
 
+    /**
+     * @var bool|string
+     */
     protected $_currentUrlPath;
+
+    /**
+     * @var bool|string
+     */
     protected $_baseUrlPath;
+
+    /**
+     * @var bool|string
+     */
     protected $_currentCategoryUrlPath;
+
+    /**
+     * @var CollectionFactory
+     */
     protected $_collectionFactory;
+
+    /**
+     * @var \Xigen\Menu\Model\Menu
+     */
     protected $_menuModel;
+
+    /**
+     * @var ItemCollectionFactory
+     */
     protected $itemCollectionFactory;
+
+    /**
+     * @var MenuCollectionFactory
+     */
     protected $menuCollectionFactory;
+
+    /**
+     * @var ItemCollectionFactory
+     */
     protected $_menuItemCollection;
 
     /**
@@ -80,13 +100,22 @@ class Menu extends Template implements IdentityInterface
     protected $categoryFactory;
 
     /**
+     * @var Registry
+     */
+    protected $_coreRegistry;
+
+    /**
+     * Menu constructor.
      * @param Template\Context $context
      * @param NodeFactory $nodeFactory
      * @param TreeFactory $treeFactory
      * @param Page $cmsPageHelper
-     * @param Category $catalogCategory
      * @param StoreManager $storeManager
      * @param Registry $registry
+     * @param CollectionFactory $categoryCollectionFactory
+     * @param ItemCollectionFactory $itemCollectionFactory
+     * @param MenuCollectionFactory $menuCollectionFactory
+     * @param CategoryFactory $categoryFactory
      * @param array $data
      */
     public function __construct(
@@ -617,7 +646,7 @@ class Menu extends Template implements IdentityInterface
     protected function _isMenuItemActive($item)
     {
         $showCategory = true;
-        
+
         // Check category status and menu visibility
         // @todo Confirm
         /*
@@ -630,7 +659,7 @@ class Menu extends Template implements IdentityInterface
             }
         }
         */
-        
+
         if ($item->getUrlType() == Data::CATEGORY && !$item->getCategoryId() && $showCategory) {
             return false;
         }

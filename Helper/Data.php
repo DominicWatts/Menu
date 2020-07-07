@@ -33,6 +33,11 @@ class Data extends AbstractHelper
     const CATEGORY_TEXT = "Category";
 
     /**
+     * @var ItemCollectionFactory
+     */
+    protected $itemCollectionFactory;
+
+    /**
      * Helper
      * @param \Magento\Framework\App\Helper\Context $context
      * @param \Xigen\Menu\Model\ResourceModel\Item\CollectionFactory $itemCollectionFactory
