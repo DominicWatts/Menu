@@ -625,7 +625,7 @@ class Menu extends Template implements IdentityInterface
             $category = $this->categoryFactory
                 ->create()
                 ->load($categoryId);
-            if (!$category->getIncludeInMenu() || !$category->isActive()) {
+            if (!$category->getIncludeInMenu() || !$category->getIsActive()) {
                 $showCategory = false;
             }
         }

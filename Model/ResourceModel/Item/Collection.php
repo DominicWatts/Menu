@@ -64,7 +64,25 @@ class Collection extends AbstractCollection
                 $menu = $menu->getMenuId();
             }
 
-            $this->addFilter(MenuInterface::MENU_ID, $menu);
+            $this->addFieldToFilter(ItemInterface::MENU_ID, $menu);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Add menu filter to item collection
+     * @param int | \Xigen\Menu\Model\Menu $menu
+     * @return $this
+     */
+    public function addCategoryFilter($category)
+    {
+        if ($category) {
+            if ($category instanceof Item) {
+                $category = $category->getCategoryId();
+            }
+
+            $this->addFieldToFilter(ItemInterface::CATEGORY_ID, $category);
         }
 
         return $this;
