@@ -2,6 +2,7 @@
 /**
  * @author Dominic <dominic@xigen.co.uk>
  */
+// phpcs:disable Generic.Files.LineLength
 
 $menu = $block->initMenu();
 $collection = $block->getMenuItemCollectionByMenu($menu);
@@ -16,21 +17,25 @@ foreach ($collection as $item) {
         <?php if (isset($menuArray[0])): ?>
             <?php foreach ($menuArray[0] as $root): ?>
             <li class="xigen-menu__item">
-                <a href="<?= $root->getCategory()->getUrl() ?>" title="" class="xigen-menu__link--top-level"><?= $root->getTitle() ?></a>
+                <a href="<?= /* @noEscape */ $root->getCategory()->getUrl() ?>" t
+                   itle="" 
+                   class="xigen-menu__link--top-level"><?= $block->escapeHtml($root->getTitle()) ?></a>
                 <!-- IF top-level have children -->
                 <?php if (isset($menuArray[$root->getItemId()])): ?>
                     <?php foreach ($menuArray[$root->getItemId()] as $levelOne): ?>
                     <div class="xigen-menu__dropdown">
                         <!-- EACH second-level category -->
                         <div class="xigen-menu__second-level">
-                            <a href="<?= $levelOne->getCategory()->getUrl() ?>" class="xigen-menu__link--second-level"><?= $levelOne->getTitle() ?></a>
+                            <a href="<?=  /* @noEscape */ $levelOne->getCategory()->getUrl() ?>" 
+                               class="xigen-menu__link--second-level"><?= $block->escapeHtml($levelOne->getTitle()) ?></a>
                             <!-- IF second-level have children -->
                             <?php if (isset($menuArray[$levelOne->getItemId()])): ?>
                                 <?php foreach ($menuArray[$levelOne->getItemId()] as $levelTwo): ?>
                                     <ul class="xigen-menu__third-level">
                                         <!-- EACH third-level category -->
                                         <li class="xigen-menu__item--third-level">
-                                            <a href="<?= $levelTwo->getCategory()->getUrl() ?>" class="xigen-menu__link--third-level"><?= $levelTwo->getTitle() ?></a>
+                                            <a href="<?=  /* @noEscape */ $levelTwo->getCategory()->getUrl() ?>" 
+                                               class="xigen-menu__link--third-level"><?= $block->escapeHtml($levelTwo->getTitle()) ?></a>
                                         </li>
                                     </ul>
                                 <?php endforeach; ?>
