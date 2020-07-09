@@ -1,0 +1,50 @@
+<?php
+/**
+ * @author Dominic <dominic@xigen.co.uk>
+ */
+
+$menu = $block->initMenu();
+$collection = $block->getMenuItemCollectionByMenu($menu);
+$menuArray = [];
+foreach ($collection as $item) {
+    $menuArray[$item->getParentId()][] = $item;
+}
+?>
+<nav class="xigen-menu">
+    <ul class="xigen-menu__list">
+        <!-- EACH top-level category -->
+        <?php if (isset($menuArray[0])): ?>
+            <?php foreach ($menuArray[0] as $root): ?>
+            <li class="xigen-menu__item">
+                <a href="<?= /* @noEscape */ $root->getFinalUrl() ?>" 
+                   title="" 
+                   class="xigen-menu__link--top-level"><?= $block->escapeHtml($root->getTitle()) ?></a>
+                <!-- IF top-level have children -->
+                <?php if (isset($menuArray[$root->getItemId()])): ?>
+                    <div class="xigen-menu__dropdown">
+                        <!-- EACH second-level category -->
+                        <?php foreach ($menuArray[$root->getItemId()] as $levelOne): ?>
+                        <div class="xigen-menu__second-level">
+                            <a href="<?= /* @noEscape */ $levelOne->getFinalUrl() ?>" 
+                               class="xigen-menu__link--second-level"><?= $block->escapeHtml($levelOne->getTitle()) ?></a>
+                            <!-- IF second-level have children -->
+                            <?php if (isset($menuArray[$levelOne->getItemId()])): ?>
+                                <ul class="xigen-menu__third-level">
+                                    <!-- EACH third-level category -->
+                                    <?php foreach ($menuArray[$levelOne->getItemId()] as $levelTwo): ?>
+                                        <li class="xigen-menu__item--third-level">
+                                            <a href="<?= /* @noEscape */ $levelTwo->getFinalUrl() ?>" 
+                                               class="xigen-menu__link--third-level"><?= $block->escapeHtml($levelTwo->getTitle()) ?></a>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif;?>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif;?>
+            </li>
+            <?php endforeach; ?>
+        <?php endif;?>
+    </ul>
+</nav>
