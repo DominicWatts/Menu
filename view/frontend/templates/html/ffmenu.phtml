@@ -1,0 +1,46 @@
+<?php
+/**
+ * @author Dominic <dominic@xigen.co.uk>
+ */
+
+$menu = $block->initMenu();
+$collection = $block->getMenuItemCollectionByMenu($menu);
+$menuArray = [];
+foreach ($collection as $item) {
+    $menuArray[$item->getParentId()][] = $item;
+}
+?>
+<nav class="xigen-menu">
+    <ul class="xigen-menu__list">
+        <!-- EACH top-level category -->
+        <?php if (isset($menuArray[0])): ?>
+            <?php foreach ($menuArray[0] as $root): ?>
+            <li class="xigen-menu__item">
+                <a href="<?= $root->getCategory()->getUrl() ?>" title="" class="xigen-menu__link--top-level"><?= $root->getTitle() ?></a>
+                <!-- IF top-level have children -->
+                <?php if (isset($menuArray[$root->getItemId()])): ?>
+                    <?php foreach ($menuArray[$root->getItemId()] as $levelOne): ?>
+                    <div class="xigen-menu__dropdown">
+                        <!-- EACH second-level category -->
+                        <div class="xigen-menu__second-level">
+                            <a href="<?= $levelOne->getCategory()->getUrl() ?>" class="xigen-menu__link--second-level"><?= $levelOne->getTitle() ?></a>
+                            <!-- IF second-level have children -->
+                            <?php if (isset($menuArray[$levelOne->getItemId()])): ?>
+                                <?php foreach ($menuArray[$levelOne->getItemId()] as $levelTwo): ?>
+                                    <ul class="xigen-menu__third-level">
+                                        <!-- EACH third-level category -->
+                                        <li class="xigen-menu__item--third-level">
+                                            <a href="<?= $levelTwo->getCategory()->getUrl() ?>" class="xigen-menu__link--third-level"><?= $levelTwo->getTitle() ?></a>
+                                        </li>
+                                    </ul>
+                                <?php endforeach; ?>
+                            <?php endif;?>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                <?php endif;?>
+            </li>
+            <?php endforeach; ?>
+        <?php endif;?>
+    </ul>
+</nav>

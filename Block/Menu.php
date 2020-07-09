@@ -515,7 +515,7 @@ class Menu extends Template implements IdentityInterface
     /**
      * @return bool
      */
-    protected function _fillMenuTree()
+    public function _fillMenuTree()
     {
         $collection = $this->_getMenuItemCollection()
             ->setParentIdOrder()
@@ -623,6 +623,24 @@ class Menu extends Template implements IdentityInterface
     }
 
     /**
+     * @return \Xigen\Menu\Model\ResourceModel\Item\Collection
+     */
+    public function getMenuItemCollectionByMenu($menu = null)
+    {
+        if (!$this->_menuItemCollection) {
+            $collection = $this->itemCollectionFactory
+                ->create()
+                ->addMenuFilter($menu)
+                ->setPositionOrder()
+                ->addStatusFilter(Data::ENABLED);
+
+            $this->_menuItemCollection = $collection;
+        }
+
+        return $this->_menuItemCollection;
+    }
+
+    /**
      * @return bool | \Xigen\Menu\Model\Menu
      */
     public function initMenu()
@@ -691,10 +709,14 @@ class Menu extends Template implements IdentityInterface
                 $item->setFullUrl($this->_cmsPageHelper->getPageUrl($item->getCmsPageIdentifier()));
                 break;
             case Data::CATEGORY:
+                /*
                 if ($categoryId = $item->getCategoryId()) {
                     $category = $this->categoryFactory
                         ->create()
                         ->load($categoryId);
+                    $item->setFullUrl($category->getUrl());
+                }*/
+                if ($category = $item->getCategory()) {
                     $item->setFullUrl($category->getUrl());
                 }
                 break;
