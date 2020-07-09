@@ -16,8 +16,8 @@ foreach ($collection as $item) {
         <?php if (isset($menuArray[0])): ?>
             <?php foreach ($menuArray[0] as $root): ?>
             <li class="xigen-menu__item">
-                <a href="<?= /* @noEscape */ $root->getFinalUrl() ?>" t
-                   itle="" 
+                <a href="<?= /* @noEscape */ $root->getFinalUrl() ?>"
+                   title="" 
                    class="xigen-menu__link--top-level"><?= $block->escapeHtml($root->getTitle()) ?></a>
                 <?php if (isset($menuArray[$root->getItemId()])): ?>
                     <?php foreach ($menuArray[$root->getItemId()] as $levelOne): ?>
