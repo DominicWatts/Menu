@@ -239,7 +239,7 @@ class Menu extends Template implements IdentityInterface
             $child->setIsLast($counter == $childrenCount);
             $child->setPositionClass($itemPositionClassPrefix . $counter);
             $child->setIsActiveUrl($this->_hasCurrentUrl($child));
-            $child->setType($child->getOpenType() == 1 ? 'target="_blank"' : '');
+            $child->setType($child->getOpenType() == Data::NEW_WINDOW ? 'target="_blank"' : '');
 
             $outermostClassCode = '';
             $outermostClass = $menuTree->getOutermostClass();
