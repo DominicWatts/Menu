@@ -4,6 +4,8 @@
  */
 // phpcs:disable Generic.Files.LineLength
 
+use Xigen\Menu\Helper\Data;
+
 $menu = $block->initMenu();
 $collection = $block->getMenuItemCollectionByMenu($menu);
 $menuArray = [];
@@ -17,19 +19,22 @@ foreach ($collection as $item) {
             <?php foreach ($menuArray[0] as $root): ?>
             <li class="xigen-menu__item">
                 <a href="<?= /* @noEscape */ $root->getFinalUrl() ?>"
-                   title="" 
+                   <?= $root->getOpenType() == Data::NEW_WINDOW ? 'target="_blank"' : '' ?>
+                   title="<?= $block->escapeHtmlAttr($root->getTitle()); ?>" 
                    class="xigen-menu__link--top-level"><?= $block->escapeHtml($root->getTitle()) ?></a>
                 <?php if (isset($menuArray[$root->getItemId()])): ?>
                     <?php foreach ($menuArray[$root->getItemId()] as $levelOne): ?>
                     <div class="xigen-menu__dropdown">
                         <div class="xigen-menu__second-level">
-                            <a href="<?=  /* @noEscape */ $levelOne->getFinalUrl() ?>" 
+                            <a href="<?=  /* @noEscape */ $levelOne->getFinalUrl() ?>"
+                               <?= $levelOne->getOpenType() == Data::NEW_WINDOW ? 'target="_blank"' : '' ?>
                                class="xigen-menu__link--second-level"><?= $block->escapeHtml($levelOne->getTitle()) ?></a>
                             <?php if (isset($menuArray[$levelOne->getItemId()])): ?>
                                 <?php foreach ($menuArray[$levelOne->getItemId()] as $levelTwo): ?>
                                     <ul class="xigen-menu__third-level">
                                         <li class="xigen-menu__item--third-level">
-                                            <a href="<?=  /* @noEscape */ $levelTwo->getFinalUrl() ?>" 
+                                            <a href="<?=  /* @noEscape */ $levelTwo->getFinalUrl() ?>"
+                                               <?= $levelTwo->getOpenType() == Data::NEW_WINDOW ? 'target="_blank"' : '' ?>
                                                class="xigen-menu__link--third-level"><?= $block->escapeHtml($levelTwo->getTitle()) ?></a>
                                         </li>
                                     </ul>
