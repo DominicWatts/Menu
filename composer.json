@@ -1,6 +1,6 @@
 {
     "name": "dominicwatts/menu",
-    "description": "",
+    "description": "Menu builder - Manage menu in backend",
     "type": "magento2-module",
     "license": "OSL-3.0",
     "version": "1.0.0",
