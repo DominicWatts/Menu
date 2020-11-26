@@ -15,6 +15,8 @@
 		<column comment="CMS Page Identifier" length="255" name="cms_page_identifier" nullable="true" xsi:type="varchar"/>
 		<column comment="Category ID" identity="false" name="category_id" nullable="true" xsi:type="int"/>
 		<column comment="Position" identity="false" name="position" nullable="true" xsi:type="int"/>
+        <column comment="Side image" length="255" name="side_image" nullable="true" xsi:type="varchar"/>
+        <column comment="Side URL" length="255" name="side_url" nullable="true" xsi:type="varchar"/>
 		<column comment="Is Active" identity="false" name="is_active" nullable="true" xsi:type="int"/>
 	</table>
 	<table comment="xigen_menu_menu Table" engine="innodb" name="xigen_menu_menu" resource="default">

@@ -21,6 +21,8 @@ interface ItemInterface extends \Magento\Framework\Api\ExtensibleDataInterface
     const URL_TYPE = 'url_type';
     const OPEN_TYPE = 'open_type';
     const IDENTIFIER = 'identifier';
+    const SIDE_IMAGE = 'side_image';
+    const SIDE_URL = 'side_url';
 
     /**
      * Get item_id
@@ -192,4 +194,30 @@ interface ItemInterface extends \Magento\Framework\Api\ExtensibleDataInterface
      * @return \Xigen\Menu\Api\Data\ItemInterface
      */
     public function setIsActive($isActive);
+
+    /**
+     * Get side_image
+     * @return string|null
+     */
+    public function getSideImage();
+
+    /**
+     * Set side_image
+     * @param string $sideImage
+     * @return \Xigen\Menu\Api\Data\ItemInterface
+     */
+    public function setSideImage($sideImage);
+
+    /**
+     * Get side_url
+     * @return string|null
+     */
+    public function getSideUrl();
+
+    /**
+     * Set side_url
+     * @param string $sideUrl
+     * @return \Xigen\Menu\Api\Data\ItemInterface
+     */
+    public function setSideUrl($sideUrl);
 }

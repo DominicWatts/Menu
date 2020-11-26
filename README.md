@@ -8,6 +8,10 @@
 
 Manage menu in backend
 
+## Release Notes
+
+1.1.0 switch to declarative schema
+
 ## Install Instructions
 
 `composer require dominicwatts/menu`

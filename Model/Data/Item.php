@@ -258,4 +258,42 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements It
     {
         return $this->setData(self::IS_ACTIVE, $isActive);
     }
+
+    /**
+     * Get side_image
+     * @return string|null
+     */
+    public function getSideImage()
+    {
+        return $this->_get(self::SIDE_IMAGE);
+    }
+
+    /**
+     * Set side_image
+     * @param string $sideImage
+     * @return \Xigen\Menu\Api\Data\ItemInterface
+     */
+    public function setSideImage($sideImage)
+    {
+        return $this->setData(self::SIDE_IMAGE, $sideImage);
+    }
+    
+    /**
+     * Get side_url
+     * @return string|null
+     */
+    public function getSideUrl()
+    {
+        return $this->_get(self::SIDE_URL);
+    }
+
+    /**
+     * Set side_url
+     * @param string $sideUrl
+     * @return \Xigen\Menu\Api\Data\ItemInterface
+     */
+    public function setSideUrl($sideUrl)
+    {
+        return $this->setData(self::SIDE_URL, $sideUrl);
+    }
 }
