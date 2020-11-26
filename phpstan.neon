@@ -5,7 +5,6 @@ parameters:
         - Api
         - Block
         - Model
-        - Setup
         - Ui
         - view
     excludes_analyse:
