@@ -101,6 +101,8 @@ class Menu implements OptionSourceInterface
                 $menus[$menu->getMenuId()] = __($name) . ' ' . $suffix;
             }
         }
+
+        return $menus;
     }
 
     /**

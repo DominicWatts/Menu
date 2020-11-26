@@ -101,6 +101,7 @@ class Page implements OptionSourceInterface
                 $pages[$page->getPageId()] = __($name) . ' ' . $suffix;
             }
         }
+        return $pages;
     }
 
     /**
