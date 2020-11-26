@@ -122,7 +122,7 @@ class Item implements OptionSourceInterface
         if (!$this->_itemCollection) {
             $collection = $this->itemCollectionFactory
                 ->create()
-                ->addStatusFilter(Data::ENABLED);
+                ->addFieldToSelect('*');
 
             $item = $this->coreRegistry->registry('xigen_menu_item');
 
