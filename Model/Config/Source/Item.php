@@ -110,6 +110,8 @@ class Item implements OptionSourceInterface
                 $items[$item->getItemId()] = __($name) . ' ' . $suffix;
             }
         }
+
+        return $items;
     }
 
     /**

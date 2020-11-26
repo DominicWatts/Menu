@@ -52,8 +52,8 @@ class Category implements OptionSourceInterface
         // phpcs:enable
 
         foreach ($collection as $category) {
-            $name = $category->getCategoryId() . ' ' . $category->getTitle();
-            $urlKey = $category->getIdentifier();
+            $name = $category->getId() . ' ' . $category->getName();
+            $urlKey = $category->getUrlKey();
 
             if (isset($name) && isset($urlKey)) {
                 $suffix = '';
@@ -63,7 +63,7 @@ class Category implements OptionSourceInterface
                 }
 
                 $categorys[] = [
-                    'value' => $category->getCategoryId(),
+                    'value' => $category->getId(),
                     'label' => __($name) . ' ' . $suffix
                 ];
             }
@@ -88,8 +88,8 @@ class Category implements OptionSourceInterface
         // phpcs:enable
 
         foreach ($collection as $category) {
-            $name = $category->getId() . ' ' . $category->getTitle();
-            $urlKey = $category->getIdentifier();
+            $name = $category->getId() . ' ' . $category->getName();
+            $urlKey = $category->getUrlKey();
 
             if (isset($name) && isset($urlKey)) {
                 $suffix = '';
@@ -101,6 +101,8 @@ class Category implements OptionSourceInterface
                 $categorys[$category->getId()] = __($name) . ' ' . $suffix;
             }
         }
+
+        return $categorys;
     }
 
     /**
@@ -110,7 +112,8 @@ class Category implements OptionSourceInterface
     {
         if (!$this->_categoryCollection) {
             $collection = $this->categoryCollectionFactory
-                ->create();
+                ->create()
+                ->addAttributeToSelect('*');
             $this->_categoryCollection = $collection;
         }
         return $this->_categoryCollection;
