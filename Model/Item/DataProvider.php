@@ -126,7 +126,7 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
             if ($this->filesystemDriver->isExists($imageName)) {
                 $stat = $this->filesystemDriver->stat($imageName);
                 $mime = $this->mime->getMimeType($imageName);
-                $option[$field][0]['name'] = basename($imageName);
+                $option[$field][0]['name'] = basename($imageName); // phpcs:ignore
                 $option[$field][0]['url'] = $model->getData($field);
                 $option[$field][0]['size'] = isset($stat) ? $stat['size'] : 0;
                 $option[$field][0]['type'] = $mime;
