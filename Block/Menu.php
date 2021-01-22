@@ -233,6 +233,7 @@ class Menu extends Template implements IdentityInterface
             }
 
             $this->_generateFinalUrl($child);
+            $this->_generateFinalTitle($child);
 
             $child->setLevel($childLevel);
             $child->setIsFirst($counter == 1);
@@ -257,7 +258,7 @@ class Menu extends Template implements IdentityInterface
 
             $html .= '<li ' . $this->_getRenderedMenuItemAttributes($child) . '>';
             $html .= '<a href="' . $child->getFullUrl() . '" ' . $outermostClassCode . $child->getType() . '><span>'
-                . $this->escapeHtml($child->getTitle()) . '</span></a>'
+                . $this->escapeHtml($child->getFinalTitle()) . '</span></a>'
                 . $this->_addSubMenu(
                     $child,
                     $childLevel,
@@ -689,6 +690,27 @@ class Menu extends Template implements IdentityInterface
     }
 
     /**
+     * Get final name
+     * @return string|null
+     */
+    protected function _generateFinalTitle($item)
+    {
+        $item->setFinalTitle(null);
+        switch ($item->getUrlType()) {
+            case Data::CUSTOM_URL:
+            case Data::CMS_PAGE:
+            default:
+                $item->FinalTitle($item->getTitle());
+            case Data::CATEGORY:
+                if ($category = $item->getCategory()) {
+                    $item->setFinalTitle($category->getName());
+                }
+                break;
+        }
+        return $item->getFinalTitle();
+    }
+
+    /**
      * Get final URL
      * @return string|null
      */
@@ -709,13 +731,6 @@ class Menu extends Template implements IdentityInterface
                 $item->setFullUrl($this->_cmsPageHelper->getPageUrl($item->getCmsPageIdentifier()));
                 break;
             case Data::CATEGORY:
-                /*
-                if ($categoryId = $item->getCategoryId()) {
-                    $category = $this->categoryFactory
-                        ->create()
-                        ->load($categoryId);
-                    $item->setFullUrl($category->getUrl());
-                }*/
                 if ($category = $item->getCategory()) {
                     $item->setFullUrl($category->getUrl());
                 }
