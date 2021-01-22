@@ -700,7 +700,7 @@ class Menu extends Template implements IdentityInterface
             case Data::CUSTOM_URL:
             case Data::CMS_PAGE:
             default:
-                $item->FinalTitle($item->getTitle());
+                $item->setFinalTitle($item->getTitle());
             case Data::CATEGORY:
                 if ($category = $item->getCategory()) {
                     $item->setFinalTitle($category->getName());
