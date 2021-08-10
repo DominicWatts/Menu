@@ -154,6 +154,7 @@ class Category extends Command
 
     /**
      * {@inheritdoc}
+     * @return int
      */
     protected function execute(
         InputInterface $input,
@@ -222,7 +223,8 @@ class Category extends Command
             $this->output->writeln('[' . $this->dateTime->gmtDate() . '] Linking');
             $this->associateItems($menu);
             $this->output->writeln('[' . $this->dateTime->gmtDate() . '] Finish');
-
+            
+            return Cli::RETURN_SUCCESS;
         }
     }
 
