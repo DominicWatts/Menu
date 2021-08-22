@@ -7,10 +7,10 @@ declare(strict_types=1);
 
 namespace Xigen\Menu\Ui\Component\Listing\Column;
 
+use Magento\Catalog\Model\CategoryFactory;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Framework\View\Element\UiComponentFactory;
 use Magento\Ui\Component\Listing\Columns\Column;
-use Magento\Catalog\Model\CategoryFactory;
 
 class CategoryId extends Column
 {
@@ -52,7 +52,6 @@ class CategoryId extends Column
 
                 $prefix = '';
                 if ($category && $category->getName()) {
-
                     for ($count=0; $count < $category->getLevel(); $count++) { //phpcs:ignore
                         $prefix .= '-';
                     }

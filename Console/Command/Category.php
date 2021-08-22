@@ -7,24 +7,23 @@ declare(strict_types=1);
 
 namespace Xigen\Menu\Console\Command;
 
+use Magento\Catalog\Helper\Category as HelperCategory;
 use Magento\Framework\App\Area;
+use Magento\Framework\App\ResourceConnection;
 use Magento\Framework\App\State;
 use Magento\Framework\Console\Cli;
 use Magento\Framework\Stdlib\DateTime\DateTime;
+use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Helper\ProgressBarFactory;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
-use Magento\Catalog\Helper\Category as HelperCategory;
-use Magento\Store\Model\StoreManagerInterface;
-use Magento\Framework\App\ResourceConnection;
-use Xigen\Menu\Api\ItemRepositoryInterface;
 use Xigen\Menu\Api\Data\ItemInterfaceFactory;
+use Xigen\Menu\Api\ItemRepositoryInterface;
 use Xigen\Menu\Helper\Data;
 use Xigen\Menu\Model\MenuFactory;
 
@@ -167,7 +166,6 @@ class Category extends Command
         $menu = $this->input->getOption(self::MENU_OPTION) ?: null;
         $store = $this->input->getOption(self::STORE_OPTION) ?: null;
         if ($menu && $store) {
-
             $helper = $this->getHelper('question');
             $question = new ConfirmationQuestion(
                 (string) __(
@@ -223,9 +221,11 @@ class Category extends Command
             $this->output->writeln('[' . $this->dateTime->gmtDate() . '] Linking');
             $this->associateItems($menu);
             $this->output->writeln('[' . $this->dateTime->gmtDate() . '] Finish');
-            
+
             return Cli::RETURN_SUCCESS;
         }
+
+        return Cli::RETURN_FAILURE;
     }
 
     public function processCategory($category, $menu)

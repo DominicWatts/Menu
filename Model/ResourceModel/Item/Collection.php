@@ -9,7 +9,6 @@ namespace Xigen\Menu\Model\ResourceModel\Item;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 use Xigen\Menu\Api\Data\ItemInterface;
-use Xigen\Menu\Api\Data\MenuInterface;
 use Xigen\Menu\Model\Item;
 use Xigen\Menu\Model\Menu;
 

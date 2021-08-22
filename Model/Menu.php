@@ -82,12 +82,14 @@ class Menu extends AbstractModel
 
     /**
      * Before save
+     * @return $this
      */
     public function beforeSave()
     {
         if (is_array($this->getData(MenuInterface::STORE_ID))) {
             $this->setStoreId(implode(',', $this->getData(MenuInterface::STORE_ID)));
         }
+        return $this;
     }
 
     /**

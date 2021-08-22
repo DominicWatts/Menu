@@ -9,18 +9,15 @@
  */
 
 $finder = PhpCsFixer\Finder::create()
-    ->in('*')
-    ->name('*.phtml')
-    ->exclude('dev/tests/integration/tmp')
-    ->exclude('dev/tests/integration/var')
-    ->exclude('lib/internal/Cm')
-    ->exclude('lib/internal/Credis')
-    ->exclude('lib/internal/Less')
-    ->exclude('lib/internal/LinLibertineFont')
-    ->exclude('pub/media')
-    ->exclude('pub/static')
-    ->exclude('setup/vendor')
-    ->exclude('var');
+    ->in('Api')
+    ->in('Block')
+    ->in('Console')
+    ->in('Controller')
+    ->in('Helper')
+    ->in('Model')
+    ->in('Setup')
+    ->in('view')
+    ->name('*.phtml');
 
 $config = new PhpCsFixer\Config();
 $config->setFinder($finder)
