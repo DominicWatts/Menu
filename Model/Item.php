@@ -134,6 +134,7 @@ class Item extends AbstractModel
 
     /**
      * Before save
+     * @return $this
      */
     public function beforeSave()
     {
