@@ -277,7 +277,7 @@ class Item extends \Magento\Framework\Api\AbstractExtensibleObject implements It
     {
         return $this->setData(self::SIDE_IMAGE, $sideImage);
     }
-    
+
     /**
      * Get side_url
      * @return string|null

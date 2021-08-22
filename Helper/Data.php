@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Xigen\Menu\Helper;
 
-use Magento\Framework\App\Helper\Context;
 use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\Context;
 use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory as ItemCollectionFactory;
 
 class Data extends AbstractHelper

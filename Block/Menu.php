@@ -7,20 +7,20 @@ declare(strict_types=1);
 
 namespace Xigen\Menu\Block;
 
-use Magento\Framework\DataObject\IdentityInterface;
-use Magento\Framework\View\Element\Template;
-use Magento\Framework\Data\TreeFactory;
+use Magento\Catalog\Model\CategoryFactory;
+use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
+use Magento\Cms\Helper\Page;
 use Magento\Framework\Data\Tree\Node;
 use Magento\Framework\Data\Tree\NodeFactory;
-use Magento\Cms\Helper\Page;
-use Magento\Store\Model\StoreManager;
-use Magento\Framework\Registry;
-use Magento\Catalog\Model\ResourceModel\Category\CollectionFactory;
+use Magento\Framework\Data\TreeFactory;
 use Magento\Framework\DataObject;
+use Magento\Framework\DataObject\IdentityInterface;
+use Magento\Framework\Registry;
+use Magento\Framework\View\Element\Template;
+use Magento\Store\Model\StoreManager;
+use Xigen\Menu\Helper\Data;
 use Xigen\Menu\Model\ResourceModel\Item\CollectionFactory as ItemCollectionFactory;
 use Xigen\Menu\Model\ResourceModel\Menu\CollectionFactory as MenuCollectionFactory;
-use Xigen\Menu\Helper\Data;
-use Magento\Catalog\Model\CategoryFactory;
 
 class Menu extends Template implements IdentityInterface
 {
@@ -701,6 +701,7 @@ class Menu extends Template implements IdentityInterface
             case Data::CMS_PAGE:
             default:
                 $item->setFinalTitle($item->getTitle());
+                break;
             case Data::CATEGORY:
                 if ($category = $item->getCategory()) {
                     $item->setFinalTitle($category->getName());

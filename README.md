@@ -1,10 +1,6 @@
 # Menu Builder
 
-![phpcs](https://github.com/DominicWatts/Menu/workflows/phpcs/badge.svg)
-
-![PHPCompatibility](https://github.com/DominicWatts/Menu/workflows/PHPCompatibility/badge.svg)
-
-![PHPStan](https://github.com/DominicWatts/Menu/workflows/PHPStan/badge.svg)
+[![Coding Standards](https://github.com/DominicWatts/Menu/actions/workflows/standards.yml/badge.svg)](https://github.com/DominicWatts/Menu/actions/workflows/standards.yml)
 
 Manage menu in backend
 
